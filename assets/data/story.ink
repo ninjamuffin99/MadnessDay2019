@@ -12,4 +12,5 @@ Right next to the entrance you entered, there's a single locker that's ajar, wit
     * * However there's a paper that stand out from the rest. 
     - - A photo of 2 people. One with a headset and visor, the other with shades and a bandana.
 * [Table]
+    You walk up to the large table.
 - 
