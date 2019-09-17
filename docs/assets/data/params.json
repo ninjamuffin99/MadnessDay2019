@@ -1,0 +1,64 @@
+{
+	"sys" : {
+		"NAME" : "AGBIC2019",
+		"VERSION" : "0.1.0",
+		"ANTIALIASING" : false,
+		"FULLSCREEN" : false,
+		"VOLUME" : 0.7
+	},
+	
+	"soundFiles" : [
+		{"id":"c_tick", "file":"cursor_tick", "fast":true },
+		{"id":"c_sel", "file":"cursor_high", "fast":true },
+		{"id":"c_back", "file":"cursor_low", "fast":true },
+		{"id":"short1", "file":"short1", "fast":true },
+		{"id":"short2", "file":"short2", "fast":true }
+	],
+	"playstate" :
+	{
+		"x":10,
+		"y":160,
+		"text":"ayylmao",
+		"size":8,
+		"cursorPadding":13,
+		"choicesX":183,
+		"choicesY":28,
+		"choicesMultiplier":13,
+		"highW":66,
+		"highH":13,
+		"highAlph":0.5,
+		"highAlphSec":0.18,
+		"flickerS":0.27,
+		"bgX": -50
+	},
+	"st_boot" : 
+	{
+		"bgColor" : "_A16[14]",
+		"text" : "(c20)Initializing djFlixel 0.3(c2)...",
+		"carrier" : "_",
+		"noise" : { "color1" : "0xFF111111", "color2" : "0xFF222222" }
+	},
+	
+	"st_intro" : 
+	{
+		"bgColor" : 1, "bgColor2" : 12, "delay1" : 0.7,
+		"l1_blink" : { "open" : true, "time" : 2.8 },
+		"l1_wave" :  { "id":"wave", "time" : 1, "width" : 3, "height" : 0.5 },
+		"l1_line" :  { "id":"line", "h0" : 2, "w0" : 20, "time" : 0 },
+		"l2_box" :   { "id":"nbox", "w":6, "j":4 },
+		"l2_line" :  { "fx2":true, "time":2, "w1":4, "run":2 },		
+		"l2_diss" :  { "time":1, "size":12 },
+		"l3_wave" :  { "time" : 0.4, "width" : 2, "height" : 0.5}
+	},
+	
+	
+	"st_intro2" : 
+	{
+		"emitter": { 
+			"x" : -12, "y" : 48, "h" : 64, "freq":0.2, "size": 64,
+			"vx0" : 40,
+			"vx1" : 80
+		}
+	}
+
+}

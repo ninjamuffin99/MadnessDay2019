@@ -1,6 +1,6 @@
 MADNESS GAME LMAO
 
-->tricky
+->deimos_sanford
 
 You wake up in a lab. 
 * [Enter next room]
