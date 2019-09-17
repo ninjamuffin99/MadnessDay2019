@@ -1,6 +1,6 @@
 MADNESS GAME LMAO
 
-->deimos_sanford
+->tricky
 
 You wake up in a lab. 
 * [Enter next room]
@@ -96,16 +96,46 @@ You all get into the car. Deimos in the drivers seat, Sanford riding shotgun. Yo
 - Deimos starts the car and it comes to life. 
 The car gets pulled out of the gas station and into the streets. Not too long later you're all on the open highway, driving through the empty grey plains. 
 Nothing in sight other than some power poles and the baren red skyline.
-Sanford turns the radio on. Some cool ass drum and bass techno ass music starts playing and braeks the somewhat awkward silence. 
-:Deimos: "Hell yeah"
+
 Sanford seems to turn towards you.
 :Sanford: "So you ever been through this part of the state?"
 * [You tell him about your little travels] 
 - :Sanford: "Interesting, well just you wait until you see Nevada from up in the cliffsides. You can see the whole town from there"
-{in_store && not buy_nothing: You {buy_soda: crack} open your{buy_candy: candy}{buy_jerky: jerky}{buy_soda: soda} and {buy_soda: take a sip | eat some.}}
+You're getting a little bored, and hungry too.
+{buy_nothing: Maybe you should have gotten some food... | Good thing Deimos bought some {buy_candy: candy}{buy_jerky: jerky}{buy_soda: soda} for you.}
+* (eating_snacks) {in_store && not buy_nothing} [{in_store && not buy_nothing: You {buy_soda:crack }open your{buy_candy: candy}{buy_jerky: jerky}{buy_soda: soda} and {buy_soda: take a sip | eat some.}}]
+    
+* (saved_snacks) {in_store && not buy_nothing} [You save it for later]
+    You never know when you'll need some {buy_candy: candy}{buy_jerky: jerky}{buy_soda: soda} handy. 
+* ->
+- 
+Sanford turns the radio on. Some cool ass drum and bass techno ass music starts playing and breaks the somewhat awkward silence. 
+:Deimos: "Hell yeah"
+This music sets the mood nicely. Three homies cruising through Nevada listening to cool ass drum and bass techno ass music. Few words are being spoken, but you feel the bond forming between you three, as you join them on this small little adventure.
 
+Cliffsides off in the distance ahead of the car start moving towards you. It's not too long when the car approaches it.
+The car follows a rough path up the sides. It reaches a spot that overlooks the plains and you can see the town far off in the distance.
+Sanford turns the car off.
+:Sanford: Here we are!
 ->END
 
+
+==tricky
+
+:Tricky: "I dunno man, sometimes I just get paranoid..."
+* ["About what?"]
+- :Tricky: "Mostly it just dumb things. It's hard to explain..."
+:Tricky: "Sometimes I talk with my friends, and they seem distant from me."
+:Tricky: "Is it just us hanging out feeling comfortable in the silence?"
+:Tricky: "Or are they trying to send a message of some sort?"
+:Tricky: "Do they not want to talk to me? Are they avoiding me?"
+Tricky pauses for a moment.
+* [You let Tricky continue]
+- 
+:Tricky: "The hardest part is I want to ask them if something is up, but then will that be clingy? Will it be totally off-base and make things weird?
+:Tricky: So I get stuck inside my own head.
+:Tricky: And end up feeling more distant than when I started.
+->END
 
 
 
