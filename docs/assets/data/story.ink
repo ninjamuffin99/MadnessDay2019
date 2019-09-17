@@ -48,13 +48,25 @@ You start regaining consciousness.
 
 ==deimos_sanford==
 You meet up with the boys at the gas station.
+fulpfadein
+fulpsetbg 711.jpg
+You see Sanford outside pumping gas
+fulpactor sanford 50 60
+fulpactor deimos 400 60
+fulphide deimos
+s
 :Sanford: "Ah hello! Good to see you!" 
 He's currently pumping gas into their car. 
 :Sanford: "Deimos is inside getting some snacks.
 * (in_store) [Go inside with Deimos]
-    You head inside the gas station. You see Deimos.
+    You head inside the gas station.
+    fulpsetbg 711Inside.jpg
+    fulphide sanford
+    fulpactor deimos 400 60
+    s
+    You see Deimos.
     :Deimos: "Yooo!" 
-    Deimos is holding a variety of snacks on sodas. "
+    Deimos is holding a variety of snacks and sodas. "
     :Deimos: I'm just grabbin' a bunch of snacks. Nab what you want from here, I gotchu.
     Aw sweet. What a nice guy :3
     Well you're in a gas station, your options are a bit limited.
@@ -80,7 +92,11 @@ He's currently pumping gas into their car.
 - :Deimos: "Alright, let's bounce!"
 * {not in_car} [You get in the car]
 * ->
-- 
+-
+fulpsetbg carinside.jpg
+s
+fulpactor sanford
+fulpactor deimos
 You all get into the car. Deimos in the drivers seat, Sanford riding shotgun. You in the back like a goon.
 {grabbed_jerky && ate_car_jerky: Deimos sniffs. "Why it smell like jerky? "Huh?" Sanford looks to you. He notices the open bag of jerky. He looks back to you. Now back to the bag.}
 {grabbed_jerky && ate_car_jerky: "Aw nice some leftover jerky!" Deimos grabs a handful of jerky. "Want some?"}
