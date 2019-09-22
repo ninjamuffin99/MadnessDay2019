@@ -68,7 +68,8 @@ class PlayState extends FlxState
 		trace(inkStory.path.componentsString);
 		trace(inkStory.currentText);
 		
-		autoText = new TypeTextTwo(20, FlxG.height * 0.65, FlxG.width - 20, inkStory.currentText, 24);
+		autoText = new TypeTextTwo(20, FlxG.height * 0.65, FlxG.width - 20, inkStory.currentText, 30);
+		autoText.font = AssetPaths.blackpool_gothic_nbp__ttf;
 		autoText.setTypingVariation(0.3);
 		autoText.start(0.03, true, false);
 		

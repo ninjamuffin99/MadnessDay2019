@@ -110,7 +110,7 @@ Hank shows you his phone. It's an image of a very fat guy, and it says "gimme mo
 * [Show Hank a funny wacky meme]
 :Hank: Can I see?
 You bust your phone out. Praying you don't scroll through certain embarrassing pictures that you don't want Hank seeing, you find a meme.
-    #show the WE ARE GOING TO BEAT YOU TO DEATH meme
+    //show the WE ARE GOING TO BEAT YOU TO DEATH meme
     :Hank: This one is a good one! Can you explain the joke for me?!
     * * [Hey madness grunt here to explain the joke]
     - - What's funny about this joke is....
