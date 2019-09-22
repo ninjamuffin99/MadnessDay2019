@@ -22,108 +22,172 @@ MADNESS GAME LMAO ->title
     
     =choose_route
     
-    :BIGBADAUD999: choose a route...
-    * [Hank]            -> hank_park -> choose_route
-    * [Gas Station]     -> deimos_sanford -> choose_route
-    * [Mall]            -> deimos_sanford_mall ->choose_route
-    - Finished game??
-    ->END
+        :BIGBADAUD999: choose a route...
+        * [Hank Intro]                          -> hank_intro -> choose_route    
+        * {hank_intro} [Hank Park]              -> hank_park -> interludes -> choose_route
+        * {hank_intro} [Hank Gamer]             ->hank_gamer -> interludes -> choose_route
+        * [Deimos/Sanford Intro]                -> deimos_sanford_intro -> choose_route
+        * {deimos_sanford_intro} [Gas Station]  -> deimos_sanford -> interludes -> choose_route
+        * {deimos_sanford_intro} [Mall]         -> deimos_sanford_mall -> interludes ->choose_route
+        - Finished game??
+        ->END
 
+== interludes ==
+    Meanwhile, back at the lab.
+    {-> second_interlude | -> thrid_interlude | -> final_interlude | ->->}
+    = intro_interlude
+        In the beginning interlude, you and the auditor do shit i guess
+        ->->
+    = second_interlude
+        :BIGBADAUD999: so, have you caught on yet?
+        * yeah, i think so....
+        - :BIGBADAUD999: good... very good...
+        :BIGBADAUD999: yeah
+        :BIGBADAUD999: you seem to be deceiving them well
+        :BIGBADAUD999: its not going to be too long before youre right in with them
+        :BIGBADAUD999: and when theyre ready...
+        * ready for what?
+        - 
+        * whats gonna happen?
+        - 
+        BIGBADAUD999 is away.
+        ...
+        ->->
+    = thrid_interlude
+        You and the Auditor get into a sort of argument about things. He warns you about what will happen if you don't listen to him.
+        ->->
+    = final_interlude
+        You try and convince the Auditor that the boys are good and they aren't as bad as he thinks. He cuts off contact with you, but only after he threatens to murder you. Even though he has the power to do so as he pleases....
+        ->->
 
-==start==
-You wake up in a lab. 
-* [Enter next room]
-- You walk up to enter the next room. The automatic door has no trouble sliding up and opening for you, revealing the room behind.
-There's a heavy metal table in the room. The room is illuminated by a sole window and the blood red skies, shining light on papers that are on the table.
-Right next to the entrance you entered, there's a single locker that's ajar, with it's padlock laying on the floor.
-
-* (locker) [Locker]
-    You open up the locker.
-    Inside there's nothing but a few papers. You skim through them. They're too technical for you to understand, they all seem to be some reports of some sort. 
-    * * However there's a paper that stand out from the rest. 
-    - - A photo of 2 people. One with a headset and visor, the other with shades and a bandana.
-    Who are they?
-* [Table]
-    You walk up to the large table. There are some office supplies on it. Some pens, a stapler.
-    A variety of different papers are scattered across it. Some paper's are reports, some are pictures of different places. 
-    On top of the mess of papers though, an image of someone. A picture taken from afar. He has some red goggles, and a bandana over his head and face. Seems like all these reports are about this person...
-- 
-* [Go to the {locker: table|locker}]
--
-BZZZZZZZZZZZZZZZZZ
-BZZZZZZZZZZZZZZZZZZZ
-Alarms go off around you!
-Before you could get to the {locker: table | locker}, what seems like an entire army start rushing into the lab room. You see them investigate the lab shit.
-* [Run for the window]
-    You try to sneak towards the window, but the guards spot you from the other room.
-    One shoots towards you, but miss and actually break the window. Perfect!
-    You run towards it, and without giving it a second thought, you dive through.
-    You fall a few stories before you hit the ground and blackout. 
-    ->streets_intro
-* Fight them
-- fasdf
-->END
-
-==streets_intro==
-FADE BACK IN
-
-You start regaining consciousness. 
-
-->END
-
-
+== hank_intro ==
+    You meet Hank at the mall.
+    You introduce yourself and he introduces himself. 
+    You hit on him, and he hits on you poorly.
+    
+    ->->
 
 == hank_park ==
-* [You decide to take a stroll to the park.]
-- It's a nice red day out today. There are other people hanging around the park.
-An overall lovely and nice day.
-* [Sit down at a bench]
-- 
-It's a nice and comfy bench. It's a standard bench made of wood and metal. Nothing too crazy about it.
-:????:Yooooooo!
-You turn and who else do you see than your good old pal Hank!
-:Hank: Hey pal! What's up!
-* [You tell Hank your recent shenanigans]
-* [The sky]
-    :Hank: Haha! Now that was a funny joke!
-- :Hank: It's good to see you doing well friend!
-:Hank: I was just strolling by for fun and pleasure!
-:Hank: And turns out I run into you! Ha! My good friend!
-:Hank: What a good and lucky day I am having!
-Hank sits down on the bench beside you and opens up his phone.
-:Hank: HA! Bro look at this funny meme I found!
-Hank pronounced it as "me-me". I'm just letting you know.
-Hank shows you his phone. It's an image of a very fat guy, and it says "gimme more borger!"
-* [Chuckle at it]
-    :Hank: I knew you would like it! 
-* [Laugh. HARD.]
-    :Hank: I knew you would like it! Haha!
-* [No reaction]
-    :Hank: It's very funny! I think you just don't get the joke.
-    :Hank: Hey it's Hank J. Wimbleton. Here to explain the joke.
-    :Hank: Basically it's funny because it is a severly obese Madness grunt depicted in a low quality art style. He is saying 'gimme more borger' because he is hungry and fat people are known to eat a lot of food.
-    :Hank: He is overweight, normally Madness grunts are not overweight so this one is different. Another thing that makes it different is the gramatical errors.
-    :Hank: Neither 'gimme' nor 'borger' are the correct spelling of either word, and 'gimme' isn't capitalized even though it is the beginning of a setance. That too makes this meme different and odd
-    :Hank: it is different thats why its so funny haha do you get it. like if you agree
-- :Hank: I sure do love memes a lot!
-:Hank: Do you got a meme you like to laugh at?
-* [Show Hank a funny wacky meme]
-:Hank: Can I see?
-You bust your phone out. Praying you don't scroll through certain embarrassing pictures that you don't want Hank seeing, you find a meme.
-    //show the WE ARE GOING TO BEAT YOU TO DEATH meme
-    :Hank: This one is a good one! Can you explain the joke for me?!
-    * * [Hey madness grunt here to explain the joke]
-    - - What's funny about this joke is....
-    * * [They are actually really nice]
-    - -
-* [No meme for hank]
-    :Hank: Aw man dangit. Oh well! I'll just find some on 9Gag later.
-- 
-Someone turns on a boombox
-it makes hank mad, and he kills people
-he feels cool
-you go to his place and play fortnite
+    * [You decide to take a stroll to the cemetary.]
+    - It's a nice red day out today. There are other people hanging around the cemetary.
+    An overall lovely and nice day.
+    * [Sit down at a bench]
+    - 
+    It's a nice and comfy bench. It's a standard bench made of wood and metal. Nothing too crazy about it.
+    :????:Yooooooo!
+    You turn and who else do you see than your good old pal Hank!
+    :Hank: Hey pal! What's up!
+    * [You tell Hank your recent shenanigans]
+    * [The sky]
+        :Hank: Haha! Now that was a funny joke!
+    - :Hank: It's good to see you doing well friend!
+    :Hank: I was just strolling by for fun and pleasure!
+    :Hank: And turns out I run into you! Ha! My good friend!
+    :Hank: What a good and lucky day I am having!
+    Hank sits down on the bench beside you and opens up his phone.
+    :Hank: HA! Bro look at this funny meme I found!
+    Hank pronounced it as "me-me". I'm just letting you know.
+    Hank shows you his phone. It's an image of a very fat guy, and it says "gimme more borger!"
+    * [Chuckle at it]
+        :Hank: I knew you would like it! 
+    * [Laugh. HARD.]
+        :Hank: I knew you would like it! Haha!
+    * [No reaction]
+        :Hank: It's very funny! I think you just don't get the joke.
+        :Hank: Hey it's Hank J. Wimbleton, here to explain the joke.
+        :Hank: Basically it's funny because it is a severly obese Madness grunt depicted in a low quality art style. He is saying 'gimme more borger' because he is hungry and fat people are known to eat a lot of food.
+        :Hank: He is overweight, normally Madness grunts are not overweight so this one is different. Another thing that makes it different is the gramatical errors.
+        :Hank: Neither 'gimme' nor 'borger' are the correct spelling of either word, and 'gimme' isn't capitalized even though it is the beginning of a setance. That too makes this meme different and odd
+        :Hank: it is different thats why its so funny haha do you get it. like if you agree
+    - :Hank: I sure do love memes a lot!
+    :Hank: Do you got a meme you like to laugh at?
+    * [Show Hank a funny wacky meme]
+    :Hank: Can I see?
+    You bust your phone out. Praying you don't scroll through certain embarrassing pictures that you don't want Hank seeing, you find a meme.
+        //show the WE ARE GOING TO BEAT YOU TO DEATH meme
+        :Hank: This one is a good one! Can you explain the joke for me?!
+        * * [Hey madness grunt here to explain the joke]
+        - - What's funny about this joke is....
+        * * [They are actually really nice]
+        - -
+    * [No meme for hank]
+        :Hank: Aw man dangit. Oh well! I'll just find some on 9Gag later.
+    - 
+    A few moments pass by. Hank turns to you.
+    :Hank: You're probably wondering why I brought you here....
+    :Hank: Well this place has meaning to me...
+    :Hank: You see, a long time ago...
+    :Hank: An incident happened here...
+    :Hank: An incident I would not particularly like to remember...
+    :Hank: But it's one that is important...
+    * [You let Hank continue]
+    - 
+    :Hank:
+    Hank explains to you the signifigance of this cemetary.
+    He tells you about the boombox guy.
+    But really it's not too signifigant or anything.
+    It's just some dumbass nowhere story.
+    
+    ->->
 
+==hank_gamer
+    You roll up to a decent looking house. There's not really any neighbours or anything. A lone house on the side of this street.
+    You go up to the door, and before you can knock, well would you look at that, Hank answers the door!
+    :Hank: Hello! My good friend! Welcome to my hous!
+    Hank greets you and gestures you to come inside with him
+    You follow him. The living room, where he has a niceflatscreen TV, and a few gaming consoles hooked up.
+    :Hank: Hey make yourself at home!
+    Well, you do. You plop down on the couch in the living room. On the coffee table there's an art book of some kind.
+    :Hank: Hey you need anything? I got uhhhhh some soda. A lot of it.
+    * (gingerale) [Ginger Ale]
+    * (rootbeer) [Root Beer]
+    * (cola) [Cola]
+    * (water)[Water]
+    * (no_drink)[Nothing]
+    - :Hank: {no_drink: Huh, alright no problem friend.|Alright, a big ol {water:glass|can} of {gingerale:ginger ale}{rootbeer: rootbeer}{cola: Coke}{water:water} for my pal}
+    {not no_drink:Hank {water:brings you|tosses you} the {water:glass|can} of {gingerale:ginger ale}{rootbeer: rootbeer}{cola: Coke}{water:water}}
+    * {not no_drink and not water} [You crack the can open.]
+        The carbonated drink fizzes away.
+    - 
+    * {not no_drink} [You take a sip]
+        It hits the right spot. Living out here in Nevada sure makes you thirsty!
+    - 
+    Hank sits down on the chair beside the couch. He grabs the controller to the game console and turns the system on.
+    :Hank: Wanna play some video games my good friend?
+    * (is_gaming) [Gaming time]
+        :Hank: Alright yeah!
+        Hank looks around for another controller.
+        :Hank: Here we go!
+        Hank hands you a thrid party controller. The plastic is clear so you can see the electronics inside. And it has cheap LEDs on the inside so that the controller lights up obnoxiously.
+        * * You wiggle the joysticks[] and they feel very crummy. Game too hard and you might just snap them off accidentally.
+        - -
+        :Hank: I'll let you use my favorite controller. 
+        :Hank: See those cool lights?! Ha! I love them!
+    * (is_watching) [You decide to just watch]
+        :Hank: Alright no problem!
+    - Hank boots up a {is_gaming:multiplayer|singleplayer} game.
+    
+    Inside it's a little messy, but whatever.
+    You play some video games with Hank
+    Then you cook some food with him.
+    Then you probably watch a show or movie with him
+    IF you play your cards right, this is outro and you stay the night.
+    If you stay the night, then you wake up and eat cereal and watch cartoons with hank and play more video games
+    Then you bounce or somethin like that
+    ->->
+    
+    
+//DEIMOS AND SANFORD
+== deimos_sanford_intro ==
+You roll up to the nightclub where Tricky is the DJ.
+He is playing some dumbass pop song from the early 2010s
+You was at the club
+Bottoms up, when I first met you.
+Couldn't get enough
+Had to get you straight to my bedroom
+You meet Deimos and Sanford
+They are jammin and shit. You check your phone and you get intel from The Auditor, he tells you which song to request the DJ Tricky to play.
+The boys are really into it.
 ->->
 
 ==deimos_sanford_mall==
@@ -275,7 +339,7 @@ you go to his place and play fortnite
     The car gets pulled out of the gas station and into the streets. Not too long later you're all on the open highway, driving through the empty grey plains. 
     Nothing in sight other than some power poles and the baren red skyline.
     
-    Sanford seems to turn towards you.
+    Sanford turns towards you.
     :Sanford: "So you ever been through this part of the state?"
     * [You tell him about your little travels] 
     - :Sanford: "Interesting, well just you wait until you see Nevada from up in the cliffsides. You can see the whole town from there"
@@ -295,8 +359,40 @@ you go to his place and play fortnite
     The car follows a rough path up the sides. It reaches a spot that overlooks the plains and you can see the town far off in the distance.
     Sanford turns the car off.
     :Sanford: Here we are!
-    You guys get out of the car.
-    You all look at the sunset.
+    * [You all get out of the car]
+    - You look at the Nevada horizon. 
+    You and Deimos lean up against the hood of the car, together you watch the sun as it dips and falls behind the far away mountains.
+    :Deimos: What a sight huh.
+    Sanford is still behind the car getting some stuff out of the trunk.
+    :Sanford: Amen!
+    He comes up front with a picnic basket.
+    :Deimos: What's this shit?
+    :Sanford: Uhh... it's a picnic basket?
+    :Deimos: What are we, some suburban white family on a Saturday out in the park?
+    :Sanford: ....
+    Sanford opens the basket, revealing something steaming wrapped up in a foil of some sort.
+    :Sanford: I brought some Philly cheesesteaks....
+    :Deimos: What the.... huh.. alright I GUESS
+    Deimos grabs one, and hands it to you.
+    :Deimos: Yo, you like some Philly cheesesteak?
+    * (ate_sandwich) [Hook me up]
+        :Deimos: Hell yeah, I gotchu
+        Deimos hands you the wrapped sandwich. It's warm to the touch.
+        * * You unwrap it[], and you see the appetizing sandwich.
+        - - 
+        * * You take a bite[] and it tastes delicious.
+        - - 
+        
+    * [Uhhh... no thanks...]
+        :Deimos: Huh... alright... suit yourself...
+        :Sanford: Come on Deimos quit bein weird about it
+    - The boys take a bite of their sandwiches{ate_sandwich: as well|.}
+    :Deimos: Man this shit is good
+    :Deimos: I needed something to get the stale jerky taste out of my mouth...
+    :Sanford: How many times do I need to tell you not to eat whatever car jerky you find?
+    :Deimos: Eh whatever
+    :Deimos: That stuff still a little tasty
+    
     There's a conversation between you three.
     You all get back in the car and drive back into town.
 ->->
