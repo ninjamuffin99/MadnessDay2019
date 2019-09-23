@@ -333,7 +333,7 @@ class PlayState extends FlxState
 				
 				fulpCheck();
 				
-				if (!dialogueClean.startsWith(prefix))
+				if (!inkStory.currentText.trim().startsWith(prefix))
 				{
 					setBox();
 					autoText.resetText(dialogueClean);
@@ -355,7 +355,8 @@ class PlayState extends FlxState
 	private function fulpCheck():Void
 	{
 		trace("FULP COMMAND");
-		var message:String = dialogueClean;
+		// DUNNO WHY, THIS SHIT NEEDS TO BE HERE
+		var message:String = inkStory.currentText.trim();
 		
 		if (message.toLowerCase().startsWith(prefix))
 		{
