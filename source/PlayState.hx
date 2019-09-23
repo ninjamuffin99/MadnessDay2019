@@ -45,8 +45,12 @@ class PlayState extends FlxState
 	private var choicesOffsets:Float = 36;
 	private var choiceMultiplier:Float = 1.5;
 
+	private var curName:FlxText;
+
 	private var blackBG:FlxSprite;
 	private var initBlackY:Float = 0; // gets set later
+
+	private var dialogueClean:String = "";
 	
 	override public function create():Void
 	{
@@ -71,27 +75,32 @@ class PlayState extends FlxState
 		trace(inkStory.canContinue);
 		trace(inkStory.path.componentsString);
 		trace(inkStory.currentText);
-		
-		autoText = new TypeTextTwo(30, FlxG.height * 0.65, FlxG.width - 30, inkStory.currentText.trim(), 36);
-		autoText.font = AssetPaths.blackpool_gothic_nbp__ttf;
-		autoText.setTypingVariation(0.3);
-		autoText.start(0.03, true, false);
-		
-		var textboxTexture = FlxAtlasFrames.fromSpriteSheetPacker(AssetPaths.dialogueBox__png, AssetPaths.dialogueBox__txt);
 
-		blackBG = new FlxSprite(5, autoText.y - 60);
+		var textboxTexture = FlxAtlasFrames.fromSpriteSheetPacker(AssetPaths.dialogueBox__png, AssetPaths.dialogueBox__txt);
+		
+		blackBG = new FlxSprite(5, (FlxG.height * 0.65) - 60);
 		blackBG.frames = textboxTexture;
 		blackBG.setGraphicSize(Std.int(FlxG.width - 10));
 		blackBG.updateHitbox();
-		blackBG.alpha = 0.95;
+		blackBG.alpha = 0.99;
 		blackBG.animation.add("noname", [0]);
 		blackBG.animation.add("name", [1]);
 		blackBG.animation.play("name");
+		initBlackY = blackBG.y;
 		add(blackBG);
 
-		initBlackY = blackBG.y;
+		curName = new FlxText(75, blackBG.y - 25, 0, "Test", 46);
+		curName.font = AssetPaths.impact__ttf;
+		add(curName);
 
+		setBox();
+		
+		autoText = new TypeTextTwo(30, FlxG.height * 0.65, FlxG.width - 30, dialogueClean, 36);
+		autoText.font = AssetPaths.blackpool_gothic_nbp__ttf;
+		autoText.setTypingVariation(0.3);
+		autoText.start(0.03, true, false);
 		add(autoText);
+		
 		
 		continueCursor = new FlxSprite(0, 0).loadGraphic(AssetPaths.blinkie__png);
 		continueCursor.setGraphicSize(Std.int(continueCursor.width * 0.2));
@@ -124,21 +133,6 @@ class PlayState extends FlxState
 		if (FlxG.keys.justPressed.N)
 			blackBG.animation.play("name");
 
-		if (blackBG.animation.curAnim.name == "name")
-		{
-			blackBG.y = initBlackY - 34;
-			autoText.y = initBlackY + 60;
-		}
-		else
-		{
-			blackBG.y = initBlackY;
-			autoText.y = blackBG.y + 25;
-		}
-			
-
-		super.update(elapsed);
-
-		
 
 		if (FlxG.keys.justPressed.I)
 			save();
@@ -197,7 +191,8 @@ class PlayState extends FlxState
 								{
 									inkStory.ChooseChoiceIndex(curSelected);
 									inkStory.Continue();
-									autoText.resetText(inkStory.currentText.trim());
+									setBox();
+									autoText.resetText(dialogueClean);
 									autoText.start(null, true);
 									
 									justSelected = true;
@@ -217,7 +212,8 @@ class PlayState extends FlxState
 					trace('tried to choose option');
 					inkStory.ChooseChoiceIndex(curSelected);
 					inkStory.Continue();
-					autoText.resetText(inkStory.currentText.trim());
+					setBox();
+					autoText.resetText(dialogueClean);
 					autoText.start(null, true);
 					
 					justSelected = true;
@@ -282,8 +278,43 @@ class PlayState extends FlxState
 		#if debug
 		//FLS.debug_keys();// F12 key reloads dynamic assets
 		#end
+
+		if (blackBG.animation.curAnim.name == "name")
+		{
+			blackBG.y = initBlackY - 34;
+			autoText.y = initBlackY + 60;
+		}
+		else
+		{
+			blackBG.y = initBlackY;
+			autoText.y = blackBG.y + 25;
+		}
+
+		super.update(elapsed);
 	}
-	
+
+	private function setBox():Void
+	{
+		dialogueClean = inkStory.currentText.trim();
+
+		if (dialogueClean.startsWith(":"))
+		{
+			blackBG.animation.play("name");
+
+			var splitName:Array<String> = dialogueClean.trim().split(":");
+			trace(splitName);
+			curName.text = splitName[1];
+
+			dialogueClean = dialogueClean.trim().substr(splitName[1].length + 2).trim();
+		}
+		else
+		{
+			curName.text = "";
+			blackBG.animation.play("noname");
+		}
+			
+	}
+
 	private function advText():Void
 	{
 		trace('tried to advance text');
@@ -302,9 +333,10 @@ class PlayState extends FlxState
 				
 				fulpCheck();
 				
-				if (!inkStory.currentText.toLowerCase().trim().startsWith(prefix))
+				if (!dialogueClean.startsWith(prefix))
 				{
-					autoText.resetText(inkStory.currentText.trim());
+					setBox();
+					autoText.resetText(dialogueClean);
 					autoText.start(null, true);
 				}
 				
@@ -323,7 +355,7 @@ class PlayState extends FlxState
 	private function fulpCheck():Void
 	{
 		trace("FULP COMMAND");
-		var message:String = inkStory.currentText.trim();
+		var message:String = dialogueClean;
 		
 		if (message.toLowerCase().startsWith(prefix))
 		{
