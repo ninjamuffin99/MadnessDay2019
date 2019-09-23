@@ -77,10 +77,12 @@ class PlayState extends FlxState
 		trace(inkStory.currentText);
 
 		var textboxTexture = FlxAtlasFrames.fromSpriteSheetPacker(AssetPaths.dialogueBox__png, AssetPaths.dialogueBox__txt);
+
+		var textY:Float = FlxG.height * 0.74;
 		
-		blackBG = new FlxSprite(5, (FlxG.height * 0.65) - 60);
+		blackBG = new FlxSprite(5, textY - 60);
 		blackBG.frames = textboxTexture;
-		blackBG.setGraphicSize(Std.int(FlxG.width - 10));
+		blackBG.setGraphicSize(Std.int(FlxG.width - 30));
 		blackBG.updateHitbox();
 		blackBG.alpha = 0.99;
 		blackBG.animation.add("noname", [0]);
@@ -89,14 +91,21 @@ class PlayState extends FlxState
 		initBlackY = blackBG.y;
 		add(blackBG);
 
-		curName = new FlxText(75, blackBG.y - 25, 0, "Test", 46);
-		curName.font = AssetPaths.impact__ttf;
+		var fakeBold = new FlxTextFormat(FlxColor.BLACK, false, false, FlxColor.BLACK);
+		var textFormat = new FlxTextFormat(FlxColor.WHITE, false, false, FlxColor.WHITE);
+
+		curName = new FlxText(65, blackBG.y - 16, 0, "Test", 52);
+		curName.font = AssetPaths.blackpool_gothic_nbp__ttf;
+		curName.setBorderStyle(OUTLINE, FlxColor.BLACK, 0.5);
+		curName.addFormat(fakeBold);
 		add(curName);
 
 		setBox();
 		
-		autoText = new TypeTextTwo(30, FlxG.height * 0.65, FlxG.width - 30, dialogueClean, 36);
+		autoText = new TypeTextTwo(30, textY, FlxG.width - 30, dialogueClean, 42);
 		autoText.font = AssetPaths.blackpool_gothic_nbp__ttf;
+		// autoText.setBorderStyle(OUTLINE, FlxColor.WHITE, 0.3);
+		autoText.addFormat(textFormat);
 		autoText.setTypingVariation(0.3);
 		autoText.start(0.03, true, false);
 		add(autoText);
@@ -281,8 +290,8 @@ class PlayState extends FlxState
 
 		if (blackBG.animation.curAnim.name == "name")
 		{
-			blackBG.y = initBlackY - 34;
-			autoText.y = initBlackY + 60;
+			blackBG.y = initBlackY - 26;
+			autoText.y = initBlackY + 50;
 		}
 		else
 		{
