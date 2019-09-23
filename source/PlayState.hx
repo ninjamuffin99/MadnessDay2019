@@ -34,6 +34,7 @@ class PlayState extends FlxState
 	private var highLight:FlxSprite;
 	private var curSelected:Int = 0;
 	private var grpChoices:FlxTypedGroup<FlxText>;
+	private var grpChoicesBuffer:FlxTypedGroup<FlxText>;
 	private var grpChoiceBGs:FlxTypedGroup<FlxSprite>;
 	private var grpActors:FlxTypedGroup<Actor>;
 	private var boxFade:BoxFader;
@@ -51,6 +52,8 @@ class PlayState extends FlxState
 	private var initBlackY:Float = 0; // gets set later
 
 	private var dialogueClean:String = "";
+
+	private var choiceStroke:FlxTextFormat = new FlxTextFormat(FlxColor.RED, null, null, FlxColor.BLACK);
 	
 	override public function create():Void
 	{
@@ -131,6 +134,9 @@ class PlayState extends FlxState
 
 		grpChoices = new FlxTypedGroup<FlxText>();
 		add(grpChoices);
+
+		grpChoicesBuffer = new FlxTypedGroup<FlxText>();
+		add(grpChoicesBuffer);
 		
 		super.create();
 	}
@@ -166,54 +172,81 @@ class PlayState extends FlxState
 			trace(inkStory.state.storySeed);
 
 		var justSelected:Bool = false;
-		grpChoices.forEach(function(txt:FlxText){grpChoices.remove(txt, true); });
+		
 		grpChoiceBGs.forEach(function(bg:FlxSprite){grpChoiceBGs.remove(bg, true); });
 		
 		
 		if (inkStory.currentChoices.length > 0)
 		{
+			if (curSelected < 0)
+				curSelected = inkStory.currentChoices.length - 1;
+			if (curSelected >= inkStory.currentChoices.length)
+				curSelected = 0;
+
 			if (autoText.isFinished)
 			{
 				highLight.visible = true;
 				
-				for (i in 0...inkStory.currentChoices.length)
+				if (grpChoices.length == 0)
 				{
-					var choice:Choice = inkStory.currentChoices[i];
-					
-					var choiceTxt:FlxText = new FlxText(0, (choicesOffsets * (i * choiceMultiplier)) + choicesOffsets, 0, choice.text, Std.int(choicesOffsets - 2));
-					choiceTxt.font = AssetPaths.impact__ttf;
-					var choiceBG:FlxSprite = new FlxSprite(choiceTxt.x, choiceTxt.y - 2).makeGraphic(Std.int(choiceTxt.fieldWidth), choiceTxt.size + 4, FlxColor.BLACK);
-					choiceBG.alpha = 0.6;
-					choiceBG.screenCenter(X);
-					// grpChoiceBGs.add(choiceBG);
-					
-					grpChoices.add(choiceTxt);
-					choiceTxt.screenCenter(X);
-					
-					if (FlxG.onMobile)
+					for (i in 0...inkStory.currentChoices.length)
 					{
-						for (touch in FlxG.touches.list)
+						var choice:Choice = inkStory.currentChoices[i];
+						
+						var choiceTxt:FlxText = new FlxText(0, (choicesOffsets * (i * choiceMultiplier)) + choicesOffsets, 0, choice.text, Std.int(choicesOffsets - 2));
+						choiceTxt.font = AssetPaths.impact__ttf;
+						choiceTxt.alpha = 0;
+						choiceTxt.y -= 10;
+						choiceTxt.ID = i;
+						choiceTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1);
+						choiceTxt.addFormat(choiceStroke);
+						FlxTween.tween(choiceTxt, {alpha: 1}, 0.4, {ease:FlxEase.quadOut, startDelay: 0.15 * i});
+						FlxTween.tween(choiceTxt, {y: choiceTxt.y + 10}, 0.4, {ease: FlxEase.quartOut, startDelay: 0.15 * i});
+						
+						// var choiceBG:FlxSprite = new FlxSprite(choiceTxt.x, choiceTxt.y - 2).makeGraphic(Std.int(choiceTxt.fieldWidth), choiceTxt.size + 4, FlxColor.BLACK);
+						// choiceBG.alpha = 0;
+						// choiceBG.screenCenter(X);
+						// grpChoiceBGs.add(choiceBG);
+
+						grpChoices.add(choiceTxt);
+						choiceTxt.screenCenter(X);
+						
+						if (FlxG.onMobile)
 						{
-							if (touch.overlaps(choiceTxt) && touch.justPressed)
+							for (touch in FlxG.touches.list)
 							{
-								if (curSelected == i)
+								if (touch.overlaps(choiceTxt) && touch.justPressed)
 								{
-									inkStory.ChooseChoiceIndex(curSelected);
-									inkStory.Continue();
-									setBox();
-									autoText.resetText(dialogueClean);
-									autoText.start(null, true);
-									
-									justSelected = true;
+									if (curSelected == i)
+									{
+										inkStory.ChooseChoiceIndex(curSelected);
+										inkStory.Continue();
+										setBox();
+										autoText.resetText(dialogueClean);
+										autoText.start(null, true);
+										
+										justSelected = true;
+									}
+									else
+										curSelected = i;
 								}
-								else
-									curSelected = i;
 							}
+							
+							
 						}
-						
-						
 					}
 				}
+				else
+				{
+					/* 
+					for (i in 0...grpChoices.members.length)
+					if (i != curSelected)
+						grpChoices.members[i].alpha = 0.3;
+					else
+						grpChoices.members[i].alpha = 1;
+					*/
+				}
+				
 				
 				
 				if (FlxG.keys.justPressed.SPACE)
@@ -240,17 +273,45 @@ class PlayState extends FlxState
 				curSelected += 1;
 			}
 			
-			if (curSelected < 0)
-				curSelected = inkStory.currentChoices.length - 1;
-			if (curSelected >= inkStory.currentChoices.length)
-				curSelected = 0;
-			
 			highLight.y = (choicesOffsets * curSelected * choiceMultiplier) + choicesOffsets + 3;
 			
 			
 		}
 		else
+		{
 			highLight.visible = false;
+		}
+		
+		if (inkStory.currentChoices.length == 0 && grpChoices.length > 0)
+		{
+			grpChoicesBuffer.forEach(function(txt:FlxText){grpChoicesBuffer.remove(txt, true);});
+			while(grpChoices.members.length > 0)
+			{
+				trace("deleted a thing");
+				grpChoicesBuffer.add(grpChoices.members[0]);
+				grpChoices.remove(grpChoices.members[0], true);
+			}
+		}
+
+		if (justSelected)
+		{
+			trace("just selected " + curSelected + " " + grpChoicesBuffer.length);
+			for (i in 0...grpChoicesBuffer.members.length)
+			{
+				trace('tween ' + i + " " + grpChoicesBuffer.members[i].text);
+
+				grpChoicesBuffer.members[i].alpha = 1;
+
+				var tweenLength:Float = 0.4;
+				if (grpChoicesBuffer.members[i].ID == curSelected)
+					tweenLength += 1.6;
+				
+				FlxTween.tween(grpChoicesBuffer.members[i], {alpha: 0, y: grpChoicesBuffer.members[i].y + 2}, tweenLength, {ease:FlxEase.quartOut, onComplete: function(tween:FlxTween){grpChoicesBuffer.remove(grpChoicesBuffer.members[i], true);}});
+
+			}
+		}
+		
+
 		
 		if (inkStory.canContinue && autoText.isFinished)
 		{
