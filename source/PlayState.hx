@@ -21,6 +21,7 @@ import haxe.Json;
 import ink.FlxStory;
 import ink.runtime.Choice;
 import openfl.Assets;
+import flixel.graphics.frames.FlxAtlasFrames;
 using flixel.util.FlxStringUtil;
 using StringTools;
 
@@ -43,6 +44,9 @@ class PlayState extends FlxState
 
 	private var choicesOffsets:Float = 36;
 	private var choiceMultiplier:Float = 1.5;
+
+	private var blackBG:FlxSprite;
+	private var initBlackY:Float = 0; // gets set later
 	
 	override public function create():Void
 	{
@@ -68,27 +72,41 @@ class PlayState extends FlxState
 		trace(inkStory.path.componentsString);
 		trace(inkStory.currentText);
 		
-		autoText = new TypeTextTwo(20, FlxG.height * 0.65, FlxG.width - 20, inkStory.currentText, 30);
+		autoText = new TypeTextTwo(30, FlxG.height * 0.65, FlxG.width - 30, inkStory.currentText.trim(), 36);
 		autoText.font = AssetPaths.blackpool_gothic_nbp__ttf;
 		autoText.setTypingVariation(0.3);
 		autoText.start(0.03, true, false);
 		
-		var blackBG:FlxSprite = new FlxSprite(autoText.x - 10, autoText.y - 10).makeGraphic(FlxG.width - 20, Std.int(FlxG.height * 0.32), FlxColor.BLACK);
-		blackBG.alpha = 0.6;
+		var textboxTexture = FlxAtlasFrames.fromSpriteSheetPacker(AssetPaths.dialogueBox__png, AssetPaths.dialogueBox__txt);
+
+		blackBG = new FlxSprite(5, autoText.y - 60);
+		blackBG.frames = textboxTexture;
+		blackBG.setGraphicSize(Std.int(FlxG.width - 10));
+		blackBG.updateHitbox();
+		blackBG.alpha = 0.95;
+		blackBG.animation.add("noname", [0]);
+		blackBG.animation.add("name", [1]);
+		blackBG.animation.play("name");
 		add(blackBG);
+
+		initBlackY = blackBG.y;
 
 		add(autoText);
 		
-		continueCursor = new FlxSprite(0, 0).makeGraphic(10, 10);
-		Align.screen(continueCursor, "center", "bottom", 13);
+		continueCursor = new FlxSprite(0, 0).loadGraphic(AssetPaths.blinkie__png);
+		continueCursor.setGraphicSize(Std.int(continueCursor.width * 0.2));
+		continueCursor.updateHitbox();
+		Align.screen(continueCursor, "center", "bottom", 20);
 		add(continueCursor);
 		
-		highLight = new FlxSprite(181);
+		highLight = new FlxSprite();
+		
 		highLight.alpha = 0.5;
-		highLight.makeGraphic(Std.int(66), Std.int(13), FlxColor.BLUE);
+		highLight.makeGraphic(Std.int(FlxG.width * 0.7), Std.int(40), FlxColor.RED);
+		highLight.screenCenter(X);
 		add(highLight);
 		
-		FlxTween.tween(highLight, {alpha: 0.9}, 0.18, {type:FlxTweenType.PINGPONG, ease:FlxEase.quadInOut, loopDelay:0.05});
+		FlxTween.tween(highLight, {alpha: 0.7}, 0.28, {type:FlxTweenType.PINGPONG, ease:FlxEase.quadInOut, loopDelay:0.05});
 		
 		grpChoiceBGs = new FlxTypedGroup<FlxSprite>();
 		add(grpChoiceBGs);
@@ -100,7 +118,27 @@ class PlayState extends FlxState
 	}
 	override public function update(elapsed:Float):Void
 	{
+
+		if (FlxG.keys.justPressed.M)
+			blackBG.animation.play("noname");
+		if (FlxG.keys.justPressed.N)
+			blackBG.animation.play("name");
+
+		if (blackBG.animation.curAnim.name == "name")
+		{
+			blackBG.y = initBlackY - 34;
+			autoText.y = initBlackY + 60;
+		}
+		else
+		{
+			blackBG.y = initBlackY;
+			autoText.y = blackBG.y + 25;
+		}
+			
+
 		super.update(elapsed);
+
+		
 
 		if (FlxG.keys.justPressed.I)
 			save();
@@ -139,11 +177,12 @@ class PlayState extends FlxState
 				{
 					var choice:Choice = inkStory.currentChoices[i];
 					
-					var choiceTxt:FlxText = new FlxText(183, (choicesOffsets * (i * choiceMultiplier)) + choicesOffsets, 0, choice.text, Std.int(choicesOffsets - 2));
+					var choiceTxt:FlxText = new FlxText(0, (choicesOffsets * (i * choiceMultiplier)) + choicesOffsets, 0, choice.text, Std.int(choicesOffsets - 2));
+					choiceTxt.font = AssetPaths.impact__ttf;
 					var choiceBG:FlxSprite = new FlxSprite(choiceTxt.x, choiceTxt.y - 2).makeGraphic(Std.int(choiceTxt.fieldWidth), choiceTxt.size + 4, FlxColor.BLACK);
 					choiceBG.alpha = 0.6;
 					choiceBG.screenCenter(X);
-					grpChoiceBGs.add(choiceBG);
+					// grpChoiceBGs.add(choiceBG);
 					
 					grpChoices.add(choiceTxt);
 					choiceTxt.screenCenter(X);
@@ -158,7 +197,7 @@ class PlayState extends FlxState
 								{
 									inkStory.ChooseChoiceIndex(curSelected);
 									inkStory.Continue();
-									autoText.resetText(inkStory.currentText);
+									autoText.resetText(inkStory.currentText.trim());
 									autoText.start(null, true);
 									
 									justSelected = true;
@@ -178,7 +217,7 @@ class PlayState extends FlxState
 					trace('tried to choose option');
 					inkStory.ChooseChoiceIndex(curSelected);
 					inkStory.Continue();
-					autoText.resetText(inkStory.currentText);
+					autoText.resetText(inkStory.currentText.trim());
 					autoText.start(null, true);
 					
 					justSelected = true;
@@ -201,7 +240,7 @@ class PlayState extends FlxState
 			if (curSelected >= inkStory.currentChoices.length)
 				curSelected = 0;
 			
-			highLight.y = (choicesOffsets * curSelected * choiceMultiplier) + choicesOffsets;
+			highLight.y = (choicesOffsets * curSelected * choiceMultiplier) + choicesOffsets + 3;
 			
 			
 		}
@@ -263,9 +302,9 @@ class PlayState extends FlxState
 				
 				fulpCheck();
 				
-				if (!inkStory.currentText.toLowerCase().startsWith(prefix))
+				if (!inkStory.currentText.toLowerCase().trim().startsWith(prefix))
 				{
-					autoText.resetText(inkStory.currentText);
+					autoText.resetText(inkStory.currentText.trim());
 					autoText.start(null, true);
 				}
 				
@@ -284,7 +323,7 @@ class PlayState extends FlxState
 	private function fulpCheck():Void
 	{
 		trace("FULP COMMAND");
-		var message:String = inkStory.currentText;
+		var message:String = inkStory.currentText.trim();
 		
 		if (message.toLowerCase().startsWith(prefix))
 		{
