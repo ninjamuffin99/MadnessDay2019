@@ -22,6 +22,9 @@ import ink.FlxStory;
 import ink.runtime.Choice;
 import openfl.Assets;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.addons.editors.pex.FlxPexParser;
+import flixel.effects.particles.FlxEmitter;
+import flixel.system.FlxSound;
 using flixel.util.FlxStringUtil;
 using StringTools;
 
@@ -54,6 +57,8 @@ class PlayState extends FlxState
 	private var dialogueClean:String = "";
 
 	private var choiceStroke:FlxTextFormat = new FlxTextFormat(FlxColor.RED, null, null, FlxColor.BLACK);
+
+	private var emitter:FlxEmitter;
 	
 	override public function create():Void
 	{
@@ -94,6 +99,11 @@ class PlayState extends FlxState
 		initBlackY = blackBG.y;
 		add(blackBG);
 
+		emitter = new FlxEmitter(0, FlxG.height);
+		FlxPexParser.parse(AssetPaths.particle__pex, AssetPaths.texture__png, emitter, 1);
+		emitter.start(false, 0.2);
+		add(emitter);
+
 		var fakeBold = new FlxTextFormat(FlxColor.BLACK, false, false, FlxColor.BLACK);
 		var textFormat = new FlxTextFormat(FlxColor.WHITE, false, false, FlxColor.WHITE);
 
@@ -112,6 +122,17 @@ class PlayState extends FlxState
 		autoText.setTypingVariation(0.3);
 		autoText.start(0.03, true, false);
 		add(autoText);
+
+		var shit = ["a", "asharp", "b", "c", "csharp", "f", "fsharp", "g", "gsharp"];
+		var goodArray:Array<FlxSound> = [];
+		for (i in 0...shit.length)
+		{
+			
+			goodArray.push(FlxG.sound.load('assets/sounds/' + shit[i] + ".mp3", 1));
+		}
+
+		autoText.sounds = goodArray;
+		autoText.finishSounds = true;
 		
 		
 		continueCursor = new FlxSprite(0, 0).loadGraphic(AssetPaths.blinkie__png);
@@ -254,6 +275,7 @@ class PlayState extends FlxState
 					trace('tried to choose option');
 					inkStory.ChooseChoiceIndex(curSelected);
 					inkStory.Continue();
+					FlxG.sound.play(AssetPaths.select__mp3, 0.3);
 					setBox();
 					autoText.resetText(dialogueClean);
 					autoText.start(null, true);
@@ -264,17 +286,19 @@ class PlayState extends FlxState
 			else
 				highLight.visible = false;
 			
+			highLight.y = (choicesOffsets * curSelected * choiceMultiplier) + choicesOffsets + 3;
+
+		
 			if (CTRL.justPressed(CTRL.UP))
 			{
 				curSelected -= 1;
+				FlxG.sound.play(AssetPaths.gunUp__mp3);
 			}
 			if (CTRL.justPressed(CTRL.DOWN))
 			{
+				FlxG.sound.play(AssetPaths.gunDown__mp3);
 				curSelected += 1;
 			}
-			
-			highLight.y = (choicesOffsets * curSelected * choiceMultiplier) + choicesOffsets + 3;
-			
 			
 		}
 		else
