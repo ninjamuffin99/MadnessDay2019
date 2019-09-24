@@ -16,7 +16,7 @@ class Main extends MainTemplate
 		ZOOM = -1;
 		RENDER_WIDTH = 960;
 		RENDER_HEIGHT = 540;
-		INITIAL_STATE = PlayState;
+		INITIAL_STATE = MenuState;
 		FPS = 60;
 
 		

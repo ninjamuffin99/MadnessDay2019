@@ -1,13 +1,4 @@
-MADNESS GAME LMAO ->title
-==title
-+ [START GAME] ->auditor_shit
-+ [CREDITS]
-    MADE BY NINJAMUFFIN99 AND CYMBOURINE FOR MADNESS DAY 2019
-    ART BY CYMBOURINE \n ADDITIONAL BACKGROUND ART HELP BY BRANDYBUIZEL
-    PROGRAMMING AND WRITING BY NINJAMUFFIN99
-    MADE WITH HAXEFLIXEL AND INK BY INKLE STUDIOS
-    ->title
-
+->auditor_shit
 ==auditor_shit==
     You get out of some test tubes or something.
     You walk up to a computer with a chat app open.
