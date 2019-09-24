@@ -26,7 +26,7 @@ class MenuState extends FlxState
 
     override public function update(elapsed:Float):Void
     {
-        if (FlxG.keys.justPressed.ENTER && !isFading)
+        if ((FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.SPACE) && !isFading)
         {
             isFading = true;
             FlxG.sound.play(AssetPaths.titleSelect__mp3, 0.9);
