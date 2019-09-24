@@ -3,7 +3,7 @@ MADNESS GAME LMAO ->title
 + [START GAME] ->auditor_shit
 + [CREDITS]
     MADE BY NINJAMUFFIN99 AND CYMBOURINE FOR MADNESS DAY 2019
-    ART BY CYMBOURINE, ADDITIONAL BACKGROUND ART HELP BY BRANDYBUIZEL
+    ART BY CYMBOURINE \n ADDITIONAL BACKGROUND ART HELP BY BRANDYBUIZEL
     PROGRAMMING AND WRITING BY NINJAMUFFIN99
     MADE WITH HAXEFLIXEL AND INK BY INKLE STUDIOS
     ->title
@@ -11,7 +11,7 @@ MADNESS GAME LMAO ->title
 ==auditor_shit==
     You get out of some test tubes or something.
     You walk up to a computer with a chat app open.
-    {|There's a daed body lying on the floor| There's two bodies lying on the ground in front of the computer. They both seem to be daed...| There's a group of dead bodies on the floor... all dead...}
+    {|There's a daed body lying on the floor| There's two bodies lying on the ground in front of the computer. They both seem to be daed...| There's a group of dead bodies on the floor... all dead...| There's a group of dead bodies on the floor... all dead...| There's so many bodies, you have to wade through them to get ot the computer |There are so many bodies all around you, you cannot even get to the computer}
     :BIGBADAUD999: Are you ready?
     + Yes[]... I think so...
         :BIGBADAUD999: good.... ive had some intel prepped...
@@ -22,22 +22,24 @@ MADNESS GAME LMAO ->title
     
     =choose_route
     
-        :BIGBADAUD999: choose a route...
-        * [Hank Intro]                          -> hank_intro -> choose_route    
-        * {hank_intro} [Hank Park]              -> hank_park -> interludes -> choose_route
-        * {hank_intro} [Hank Gamer]             ->hank_gamer -> interludes -> choose_route
-        * [Deimos/Sanford Intro]                -> deimos_sanford_intro -> choose_route
+        CUTE BOY TRACKER
+        * [Cliff]                               -> hank_intro -> choose_route    
+        * {hank_intro} [Cemetary]               -> hank_park -> interludes -> choose_route
+        * {hank_intro} [Hank's House]               ->hank_gamer -> interludes -> choose_route
+        * [Gay Nightclub]                       -> deimos_sanford_intro -> choose_route
         * {deimos_sanford_intro} [Gas Station]  -> deimos_sanford -> interludes -> choose_route
         * {deimos_sanford_intro} [Mall]         -> deimos_sanford_mall -> interludes ->choose_route
+        * {deimos_sanford and deimos_sanford_mall} [Sanford/Deimos ending] -> deimos_sanford_ending -> interludes -> choose_route
+        * {hank_park and hank_gamer} [Hank ending] -> hank_ending -> interludes -> choose_route
         - Finished game??
         ->END
 
 == interludes ==
-    Meanwhile, back at the lab.
+    YOU HEAD BACK TO THE LAB
     {-> second_interlude | -> thrid_interlude | -> final_interlude | ->->}
     = intro_interlude
         In the beginning interlude, you and the auditor do shit i guess
-        ->->
+        ->is_away
     = second_interlude
         :BIGBADAUD999: so, have you caught on yet?
         * yeah, i think so....
@@ -50,14 +52,17 @@ MADNESS GAME LMAO ->title
         - 
         * whats gonna happen?
         - 
-        BIGBADAUD999 is away.
-        ...
-        ->->
+        
+        ->is_away
     = thrid_interlude
         You and the Auditor get into a sort of argument about things. He warns you about what will happen if you don't listen to him.
-        ->->
+        ->is_away
     = final_interlude
         You try and convince the Auditor that the boys are good and they aren't as bad as he thinks. He cuts off contact with you, but only after he threatens to murder you. Even though he has the power to do so as he pleases....
+        ->is_away
+    = is_away
+        BIGBADAUD999 is away.
+        ...
         ->->
 
 == hank_intro ==
@@ -166,29 +171,107 @@ MADNESS GAME LMAO ->title
     * (is_watching) [You decide to just watch]
         :Hank: Alright no problem!
     - Hank boots up a {is_gaming:multiplayer|singleplayer} game.
-    
-    Inside it's a little messy, but whatever.
-    You play some video games with Hank
-    Then you cook some food with him.
-    Then you probably watch a show or movie with him
-    IF you play your cards right, this is outro and you stay the night.
-    If you stay the night, then you wake up and eat cereal and watch cartoons with hank and play more video games
-    Then you bounce or somethin like that
+    It is a first person shooter of some kind.
+    Hank loads into the online multiplayer, and he puts on a headset.
+    :Hank: The most important part of video gaming is communication!
+    {is_gaming: You two|Hank} play{is_watching:s} a match {is_gaming:together}.
+    Hank loses the game and calls his teamates the N word.
+    :Hank: Gamer moment.
+    Hank looks to you and realizes his sin.
+    :Hank: Sorry, I get very heated in these video game situations. I apologize if I have offended you!
+    Hank's teammates call him gay.
+    * [Back Hank up]
+        You decide to defend your good pal Hank. You grab Hank's controller and teamkill his teammates.
+        They call you gay.
+        And then votekick Hank from the game.
+        :Hank: DAMNIT! My reputation! Oh well.
+    * [Suggest doing something else]
+        :Hank: Hmmm, alright yeah
+    - :Hank: I don't even like video games they are too hard for me.
+    :Hank: Well if we aren't going to play video games, what else do you wanna do?
+    :Hank: Maybe we can watch funny internet videos!
+    * [Watch cringe compilations]
+    - You find a playlist of videos about pickup artists.
+    :Hank: Woah! Is this how I should make friends??
+    * [You explain that this is the OPPOSITE of how you interact with people]
+    - :Hank: Huh, alright I see!
+    :Hank: I'm getting a bit hungry, I'm going to order a pizza pie!
+    Hank orders a pizza pie.
+    You continue to watch various cringe vids. Eventually the pizza comes. For the next few hours you both laugh at socially retarded individuals and eat pepperoni pizza together.
+    At some point Hank notices the time.
+    :Hank: Woah, I just noticed the time!
+    :Hank: It's very late out right now!
+    :Hank: What if you stayed overnight?
+    :Hank: haha jk...
+    :Hank: unless...
+    * [Stay overnight]
+        :Hank: Hell yeah! Sleepover!
+        You stay overnight.
+        You and Hank have a good night together, watching wacky internet videos, eating more pizza.
+        YOU BOTH GO TO SLEEP AND ABSOLUTELY NO GAY SHIT HAPPENS
+        In the morning, you wake up and Hank makes you a bowl of cereal.
+        You both watch some cartoons. After a little while you decide to say your farewell to Hank and head home.
+    * [Go home]
+        :Hank: Alright no problem!
+        :Hank: I hope you have a safe trip back home my good friend!
+        :Hank: I had a very fun evening with you!
+        You head home.
+    - 
     ->->
     
+== hank_ending ==
+    This is the Hank ending.
+    Maybe he leaves you to go on a killing spree or something.
+    blah blah blah whatever insert some ending here.
+    Also shit he shows you his realistic eyes
+    
+    ->->
     
 //DEIMOS AND SANFORD
 == deimos_sanford_intro ==
-You roll up to the nightclub where Tricky is the DJ.
-He is playing some dumbass pop song from the early 2010s
-You was at the club
-Bottoms up, when I first met you.
-Couldn't get enough
-Had to get you straight to my bedroom
-You meet Deimos and Sanford
-They are jammin and shit. You check your phone and you get intel from The Auditor, he tells you which song to request the DJ Tricky to play.
-The boys are really into it.
-->->
+    You roll up to the nightclub where Tricky is the DJ.
+    He is playing some dumbass pop song from the early 2010s
+    You was at the club
+    Bottoms up, when I first met you.
+    Couldn't get enough
+    Had to get you straight to my bedroom
+    You meet Deimos and Sanford
+    They are jammin and shit. You check your phone and you get intel from The Auditor, he tells you which song to request the DJ Tricky to play.
+    The boys are really into it.
+    * [You walk to the center of the dance floor.]
+    - Everyone is looking at you!
+    * [You bust some moves!]
+    - You were cloned with supernatural dance skils and powers.
+    A circle forms around, everyone is clapping and shoutin at you, cheering you on.
+    You keep bustin some moves, when suddenly, a stranger emerges from the crowd.
+    :Sanford: My name is Sanford, I own the dancefloor around here. 
+    The crowd parts, one half on this Sanford guys side, the other goes to yours.
+    You each bust a move, the party is getting so hot and steamy.
+    What moves do you bust?
+    * (floss) [The floss]
+        BOOOO
+        Everyone boo's you so bad, you are forced to leave the dance floor.
+        However, Sanford comes over to you
+        :Sanford: You got some nerve tryin to dance battle me kid.
+        :Sanford: Ayo Deimos check this guy out!
+        A man comes, presumably Deimos.
+        :Sanford: Hey, take my number pal, maybe I'll show ya how to bust a move like I do.
+        
+    * [The Robot]
+        That was so bland.
+        Everyone threw up on the dance floor.
+        But it turns out
+    * [That Snoop Dogg dance, you know the one]
+        Everyone cheers.
+        Sanford comes and walks to you
+        :Sanford: Hey kid, those moves were pretty sweet. 
+        :Sanford: Yo Deimos, come check this dude out.
+        A man, presumably Deimos, walks up to you both.
+        :Sanford: This my guy Deimos
+        Why don't I give you my nubmer, and you can teach me a thing or two.
+    - 
+    
+    ->->
 
 ==deimos_sanford_mall==
     You walk into the mall's entrance. Inside you see a clean hall with stores scattered on each side.
@@ -252,22 +335,110 @@ The boys are really into it.
     
     =clothes_store
         {explored: You remember the clothes store was right next the video game shop.| After looking for a little while, you fellas find the clothes store.}
-        You walk into the clothes store. 
-        You look at some shit.
-        Deimos and Sanford pick you out a fit, since they stylin and shit.
+        You walk into the Hot Topic
+        :Sanford: Oh hey, there's my favourite Dragonball Super T-Shirt!
+        :Sanford: It has ultra instinct Goku on it!
+        :Sanford: My favorite character!
+        Sanford points at the clerk
+        :Sanford: Hey look at that hot chick with the thumbtack earings!
+        :Sanford: That's pretty hip!
+        :Sanford: But not as hip as this Legend Of Zelda Monopoly set!
+        :Sanford: And it's only 20$ what a steal!
+        :Deimos: Sanford this is serious business, we came here on serious business!
+        :Deimos: We need to find out friend a shirt! And Fast!
+        Deimos nabs the first shirt off the rack.
+        It's a Rick and Morty Pickle Rick shirt.
+        :Both: Perfect!
+        You go try the shirt on. It wraps around your body so nicely, you can see your hot pecks sticking out.
+        :Deimos: Damn, that shirt wraps around your body so nicely, you can see your hot pecks sticking out!
+        :Sanford: I approve.
+        They buy the shirt for you, and also pickup a Finn Wolfhard Stranger Things FunkoPop! figure.
+        :Sanford: Wow! It's Comiccon exclusive! And it's at Hottopic! Cool!
+        They also get 2 for themselves.
         ->mall_choices
     
     =going_exploring
-        You all walk around the mall for a bit. You see some clothes stores, but what you're really after is the video game shop.
-        Deimos looks for some cool ass retro games.
-        Actually you have a choice between a few shops.
+        You all walk around the mall for a bit. You see some clothes stores.
+        :Deimos: Imma head into the video game store, I wanna see what's new.
+        :Sanford: Aight, im headin in the arts and crafts store.
+        * [Video game]
+            You go into the video game shop with Deimos.
+            You see all sorts of retro video games.
+            And most importantly, you see your good friend Deimos.
+            You go up to Deimos, he has a video game in his hand.
+            What video game does he have in his hand?
+            He's got Link's Crossbow training for the Nintendo Wii
+            :Deimos: This shit is a collector's item!
+            :Deimos: How lucky am I?!
+            :Deimos: You find anything interesting?
+            You tell him you haven't looked around yet.
+            Deimos looks around.
+            :Deimos: Hmmm, you know what, I'll hook you up with something from the bargain bin.
+            Hell yeah
+            * *  [You go the bargain bin.]
+            - - There's an assortment of shitty Nintendo DS shovelware games.
+            - - (digloop)
+            + + [You dig around in the bargain bin]
+            - - 
+            In the bin, you find {Lego Star Wars|}
+            + + [Keep digging?]
+                You decide to keep digging. -> digloop
+            * * [Stop diggin]
+            - - You pick out a game from the bargain bin, and bring it to Deimos.
+            
+            
+            
+        * [Arts and crafts]
+            You walk into the arts and crafts shop. There's yarns all around. And it smell like construction paper and Elmer's Glue.
+            You see Sanford.
+            :Sanford: Let's check out the snail shells, I need em for a project.
+            You walk over to the snail section.
+            You inspect all the variety of snail shit.
+            
+            :Sanford: Wow, free samples, wanna try some?
+            * * [Eat]
+                You put the snail shell in your mouth and crunch down.
+                It tastes goooood.
+                But suddenly
+                You vision goes black!
+                You forgot you were allergic to snail shells! 
+                YOU DIED
+                BAD ENDING!
+                ->END
+            * * [Crush]
+                You crush the snailshells in your hand and spread it around like pixie dust.
+                You blow it on Sanford
+            * * [Put them on Sanford]
+                You make a lovely necklace of snail shells.
+                You romantically put it around Sanford's neck.
+                He turns to you.
+                :Sanford: This is beutiful...
+                :Sanford: I love it....
+                A shimmer is in his eye, he's never experienced this before from anyone other than Deimos.
+                :Sanford: Thank you,,.....
+            - - 
+        - 
         Video game shop with deimos, or the arts and crafts store with Sanford. Or something by yourself.
         After you all buy shit, you meet up again and head to the food court, or leave the mall
+        One of you goes to the lego store.
         -> mall_choices
         
     =leave_mall
+        :Sanford: Let's go back to the food court and get somethin special.
+        You all go back to the food court.
+        Sanford goes up to the ice cream place.
+        :Sanford: One large chocolate milkshake please!
+        Sanford turns to Deimos
+        :Sanford: This time, I'LL carry the stuff.
+        Deimos frowns.
+        Sanford gets the milkshake from the ice cream employee.
+        :Sanford: And three straws please!
+        You all walk to a table, and sit down together.
+        Deimos on your left side, Sanford on your right.
+        You all drink the milkshake at the same time like some Archie, Veronica and Betty ass bullshit
+        All lookin cute and shit
+        :Deimos: That sure was delicious!
         After a fun day you decide to leave the mall.
-        Recap what you did. Maybe you hung out with Deimos more.
         ->->
 
 
@@ -275,7 +446,7 @@ The boys are really into it.
 ==deimos_sanford==
     You meet up with the boys at the gas station.
     fulpfadein
-    fulpsetbg 711.jpg
+    fulpsetbg GasStation.png
     You see Sanford outside pumping gas
     fulpactor sanford 50 60
     fulpactor deimos 400 60
@@ -392,10 +563,19 @@ The boys are really into it.
     :Sanford: How many times do I need to tell you not to eat whatever car jerky you find?
     :Deimos: Eh whatever
     :Deimos: That stuff still a little tasty
-    
-    There's a conversation between you three.
-    You all get back in the car and drive back into town.
-->->
+    //fadeout
+    You all enjoy the sunset and eating food together. You finish some snacks, while you hang out with your bros.
+    The evening was tranquil, outside of town not too much happens. 
+    ESPECIALLY NOT GAY SHIT, NO GAY SHIT HAPPENED.
+    The boys drive back into town with you, and they drop you off.
+    You head home.
+    ->->
+
+== deimos_sanford_ending
+    You meetup with Sanford and Deimos.
+    You get in their car
+    Deimos dies somehow
+    ->->
 
 
 
