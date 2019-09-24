@@ -105,7 +105,7 @@ class PlayState extends FlxState
 
 		setBox();
 		
-		autoText = new TypeTextTwo(30, textY, FlxG.width - 30, dialogueClean, 42);
+		autoText = new TypeTextTwo(30, textY, Std.int(blackBG.width - 30), dialogueClean, 42);
 		autoText.font = AssetPaths.blackpool_gothic_nbp__ttf;
 		// autoText.setBorderStyle(OUTLINE, FlxColor.WHITE, 0.3);
 		autoText.addFormat(textFormat);
