@@ -31,10 +31,8 @@
 	<classpath name="source" />
 	<assets path="assets/images"/>
 	<assets path="assets/data"/>
-	<assets path="assets/music" include="*.mp3" if="flash" />
-	<assets path="assets/music" include="*.ogg" unless="flash" />
-	<assets path="assets/sounds" include="*.mp3" if="flash" />
-	<assets path="assets/sounds" include="*.ogg" unless="flash" />
+	<assets path="assets/music" include="*.mp3"/>
+	<assets path="assets/sounds" include="*.mp3"/>
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
