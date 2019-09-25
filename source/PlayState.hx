@@ -398,6 +398,7 @@ class PlayState extends FlxState
 
 		if (dialogueClean.startsWith(":"))
 		{
+			curName.alpha = 1;
 			blackBG.animation.play("name");
 
 			var splitName:Array<String> = dialogueClean.trim().split(":");
@@ -408,7 +409,7 @@ class PlayState extends FlxState
 		}
 		else
 		{
-			curName.text = "";
+			curName.alpha = 0;
 			blackBG.animation.play("noname");
 		}
 			
