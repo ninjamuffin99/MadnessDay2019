@@ -6,7 +6,9 @@
     s
     You appear to be in a lab of some kind.
     You walk up to a computer with a chat app open.
+    fulpactor laptop 300 100
     {|There's a daed body lying on the floor| There's two bodies lying on the ground in front of the computer. They both seem to be daed...| There's a group of dead bodies on the floor... all dead...| There's a group of dead bodies on the floor... all dead...| There's so many bodies, you have to wade through them to get ot the computer |There are so many bodies all around you, you cannot even get to the computer}
+    Someone is typing...
     :BIGBADAUD999: u up?
     + [new phone who dis?]
     -
@@ -19,19 +21,22 @@
         :BIGBADAUD999: not gonna give too many details, im sure youll cathc on...
         :BIGBADAUD999: *catch
         :BIGBADAUD999: ill give you a choice between a few locations. once you arrive, you'll know what you have to do....
+        fulphide laptop
         -> choose_route
     + [No??]
         Everything goes black.
         fulpfadeout
+        fulphide laptop
         s
         ->auditor_shit
     
     =choose_route
+        fulpfadeout
         {|"Once you arrive, you'll know what you have to do."}
         * [Mall]                               -> hank_intro -> choose_route    
         * {hank_intro} [Cemetary]               -> hank_park -> interludes -> choose_route
         * {hank_intro} [Hank's House]               ->hank_gamer -> interludes -> choose_route
-        * [Gay Nightclub]                       -> deimos_sanford_intro -> choose_route
+        * [Nightclub]                       -> deimos_sanford_intro -> choose_route
         * {deimos_sanford_intro} [Gas Station]  -> deimos_sanford -> interludes -> choose_route
         * {deimos_sanford_intro} [Mall]         -> deimos_sanford_mall -> interludes ->choose_route
         * {deimos_sanford and deimos_sanford_mall} [Sanford/Deimos ending] -> deimos_sanford_ending -> interludes -> choose_route
@@ -71,7 +76,13 @@
         ->->
 
 == hank_intro ==
-    You meet Hank at the mall.
+    You go to the local mall.
+    fulpfadein
+    fulpsetbg mall.png
+    You walk around for a while, aimlessly strolling through the shops.
+    When suddenly
+    You see him.
+    fulpactor Hank2 300 100
     You introduce yourself and he introduces himself. 
     You hit on him, and he hits on you poorly.
     
