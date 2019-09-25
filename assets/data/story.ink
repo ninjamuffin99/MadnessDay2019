@@ -3,7 +3,6 @@
     You get out of some test tubes or something.
     fulpsetbg medbay.png
     fulpfadein
-    s
     You appear to be in a lab of some kind.
     You walk up to a computer with a chat app open.
     fulpactor laptop 300 100
@@ -27,7 +26,6 @@
         Everything goes black.
         fulpfadeout
         fulphide laptop
-        s
         ->auditor_shit
     
     =choose_route
@@ -480,7 +478,6 @@
     fulpactor sanford 50 60
     fulpactor deimos 400 60
     fulphide deimos
-    s
     :Sanford: "Ah hello! Good to see you!" 
     He's currently pumping gas into their car. 
     :Sanford: "Deimos is inside getting some snacks.
@@ -489,7 +486,6 @@
         fulpsetbg 711Inside.jpg
         fulphide sanford
         fulpactor deimos 400 60
-        s
         You see Deimos.
         :Deimos: "Yooo!" 
         Deimos is holding a variety of snacks and sodas. "

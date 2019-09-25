@@ -31,8 +31,8 @@ class MenuState extends FlxState
             isFading = true;
             FlxG.sound.play(AssetPaths.titleSelect__mp3, 0.9);
             FlxG.sound.music.volume *= 0.5;
-            FlxG.sound.music.fadeOut(4);
-            FlxG.camera.fade(FlxColor.WHITE, 4, false, function(){FlxG.switchState(new PlayState());}, true);
+            FlxG.sound.music.fadeOut(2);
+            FlxG.camera.fade(FlxColor.WHITE, 2, false, function(){FlxG.switchState(new PlayState());}, true);
         }
 
         super.update(elapsed);

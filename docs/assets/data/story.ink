@@ -1,23 +1,40 @@
 ->auditor_shit
 ==auditor_shit==
     You get out of some test tubes or something.
+    fulpsetbg medbay.png
+    fulpfadein
+    You appear to be in a lab of some kind.
     You walk up to a computer with a chat app open.
+    fulpactor laptop 300 100
     {|There's a daed body lying on the floor| There's two bodies lying on the ground in front of the computer. They both seem to be daed...| There's a group of dead bodies on the floor... all dead...| There's a group of dead bodies on the floor... all dead...| There's so many bodies, you have to wade through them to get ot the computer |There are so many bodies all around you, you cannot even get to the computer}
-    :BIGBADAUD999: Are you ready?
-    + Yes[]... I think so...
-        :BIGBADAUD999: good.... ive had some intel prepped...
+    Someone is typing...
+    :BIGBADAUD999: u up?
+    + [new phone who dis?]
+    -
+    :BIGBADAUD999: alright {~very good....|nice|cool cool}
+    :BIGBADAUD999: {~ay|yo} you ready?
+    + Yes??[]... I think so...
+        :BIGBADAUD999: good.... 
+        :BIGBADAUD999: when u ready, you KNOW you ready
+        :BIGBADAUD999: this is a big mission, a long con one may call it...
+        :BIGBADAUD999: not gonna give too many details, im sure youll cathc on...
+        :BIGBADAUD999: *catch
+        :BIGBADAUD999: ill give you a choice between a few locations. once you arrive, you'll know what you have to do....
+        fulphide laptop
         -> choose_route
-    + [No]
+    + [No??]
         Everything goes black.
+        fulpfadeout
+        fulphide laptop
         ->auditor_shit
     
     =choose_route
-    
-        CUTE BOY TRACKER
-        * [Cliff]                               -> hank_intro -> choose_route    
+        fulpfadeout
+        {|"Once you arrive, you'll know what you have to do."}
+        * [Mall]                               -> hank_intro -> choose_route    
         * {hank_intro} [Cemetary]               -> hank_park -> interludes -> choose_route
         * {hank_intro} [Hank's House]               ->hank_gamer -> interludes -> choose_route
-        * [Gay Nightclub]                       -> deimos_sanford_intro -> choose_route
+        * [Nightclub]                       -> deimos_sanford_intro -> choose_route
         * {deimos_sanford_intro} [Gas Station]  -> deimos_sanford -> interludes -> choose_route
         * {deimos_sanford_intro} [Mall]         -> deimos_sanford_mall -> interludes ->choose_route
         * {deimos_sanford and deimos_sanford_mall} [Sanford/Deimos ending] -> deimos_sanford_ending -> interludes -> choose_route
@@ -57,21 +74,38 @@
         ->->
 
 == hank_intro ==
-    You meet Hank at the mall.
+    You go to the local mall.
+    fulpfadein
+    fulpsetbg mall.png
+    You walk around for a while, aimlessly strolling through the shops.
+    When suddenly
+    You see him.
+    fulpactor hank2 300 100
+    fulpactor hank 300 100
+    fulphide hank
     You introduce yourself and he introduces himself. 
     You hit on him, and he hits on you poorly.
-    
+    fulpfadeout
+    fulpwait 2
+    fulphide hank2
     ->->
 
 == hank_park ==
+    It is a lovely day for a stroll!
+    Perhaps to the....
+    fulpfadein
+    fulpsetbg cemetary.png
+    Cemetary!
     * [You decide to take a stroll to the cemetary.]
-    - It's a nice red day out today. There are other people hanging around the cemetary.
+    - 
+    It's all red and shit outside
     An overall lovely and nice day.
     * [Sit down at a bench]
     - 
     It's a nice and comfy bench. It's a standard bench made of wood and metal. Nothing too crazy about it.
     :????:Yooooooo!
     You turn and who else do you see than your good old pal Hank!
+    fulpactor hank
     :Hank: Hey pal! What's up!
     * [You tell Hank your recent shenanigans]
     * [The sky]
@@ -127,27 +161,29 @@
     ->->
 
 ==hank_gamer
-    You roll up to a decent looking house. There's not really any neighbours or anything. A lone house on the side of this street.
+    You roll up to a decent looking house.
+    fulpfadein
+    fulpsetbg hanksdoor.png
+    There's not really any neighbours or anything. A lone house on the side of this street.
     You go up to the door, and before you can knock, well would you look at that, Hank answers the door!
+    fulpactor hank2
     :Hank: Hello! My good friend! Welcome to my hous!
     Hank greets you and gestures you to come inside with him
+    fulpsetbg hankshouse.png
     You follow him. The living room, where he has a niceflatscreen TV, and a few gaming consoles hooked up.
     :Hank: Hey make yourself at home!
-    Well, you do. You plop down on the couch in the living room. On the coffee table there's an art book of some kind.
+    Well, you do. You plop down on the couch in the living room.
     :Hank: Hey you need anything? I got uhhhhh some soda. A lot of it.
     * (gingerale) [Ginger Ale]
     * (rootbeer) [Root Beer]
     * (cola) [Cola]
-    * (water)[Water]
-    * (no_drink)[Nothing]
+    * (water) [Water]
+    * (no_drink) [Nothing]
     - :Hank: {no_drink: Huh, alright no problem friend.|Alright, a big ol {water:glass|can} of {gingerale:ginger ale}{rootbeer: rootbeer}{cola: Coke}{water:water} for my pal}
     {not no_drink:Hank {water:brings you|tosses you} the {water:glass|can} of {gingerale:ginger ale}{rootbeer: rootbeer}{cola: Coke}{water:water}}
-    * {not no_drink and not water} [You crack the can open.]
-        The carbonated drink fizzes away.
-    - 
-    * {not no_drink} [You take a sip]
-        It hits the right spot. Living out here in Nevada sure makes you thirsty!
-    - 
+    
+    {not no_drink and not water: You crack the can open. The carbonated drink fizzes away.}
+    {not no_drink:  You take a sip. It hits the right spot. Living out here in Nevada sure makes you thirsty!}
     Hank sits down on the chair beside the couch. He grabs the controller to the game console and turns the system on.
     :Hank: Wanna play some video games my good friend?
     * (is_gaming) [Gaming time]
@@ -442,7 +478,6 @@
     fulpactor sanford 50 60
     fulpactor deimos 400 60
     fulphide deimos
-    s
     :Sanford: "Ah hello! Good to see you!" 
     He's currently pumping gas into their car. 
     :Sanford: "Deimos is inside getting some snacks.
@@ -451,7 +486,6 @@
         fulpsetbg 711Inside.jpg
         fulphide sanford
         fulpactor deimos 400 60
-        s
         You see Deimos.
         :Deimos: "Yooo!" 
         Deimos is holding a variety of snacks and sodas. "

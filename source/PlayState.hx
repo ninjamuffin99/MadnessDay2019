@@ -67,6 +67,8 @@ class PlayState extends FlxState
 		
 		bg = new FlxSprite(0, 0).makeGraphic(1, 1, FlxColor.TRANSPARENT);
 		add(bg);
+
+		var ng:NGio = new NGio(APIStuff.APIKEY, APIStuff.ENCKEY);
 		
 		//var overlay:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.placeholderBG__png);
 		//add(overlay);
@@ -107,7 +109,9 @@ class PlayState extends FlxState
 		var fakeBold = new FlxTextFormat(FlxColor.BLACK, false, false, FlxColor.BLACK);
 		var textFormat = new FlxTextFormat(FlxColor.WHITE, false, false, FlxColor.WHITE);
 
-		curName = new FlxText(65, blackBG.y - 16, 0, "Test", 52);
+		curName = new FlxText(60, blackBG.y - 16, 190, "Test", 52);
+		curName.autoSize = false;
+		curName.alignment = CENTER;
 		curName.font = AssetPaths.blackpool_gothic_nbp__ttf;
 		curName.setBorderStyle(OUTLINE, FlxColor.BLACK, 0.5);
 		curName.addFormat(fakeBold);
@@ -163,6 +167,7 @@ class PlayState extends FlxState
 	}
 	override public function update(elapsed:Float):Void
 	{
+		FlxG.watch.addMouse();
 
 		if (FlxG.keys.justPressed.M)
 			blackBG.animation.play("noname");
