@@ -5,22 +5,23 @@
     fulpfadein
     You appear to be in a lab of some kind.
     You walk up to a computer with a chat app open.
-    fulpactor laptop 300 100
+    fulpactor auditor 300 100
     {|There's a daed body lying on the floor| There's two bodies lying on the ground in front of the computer. They both seem to be daed...| There's a group of dead bodies on the floor... all dead...| There's a group of dead bodies on the floor... all dead...| There's so many bodies, you have to wade through them to get ot the computer |There are so many bodies all around you, you cannot even get to the computer}
     Someone is typing...
-    :BIGBADAUD999: u up?
+    :Auditor: u up?
     + [new phone who dis?]
     -
-    :BIGBADAUD999: alright {~very good....|nice|cool cool}
-    :BIGBADAUD999: {~ay|yo} you ready?
+    :Auditor: alright {~very good....|nice|cool cool}
+    :Auditor: {~ay|yo} you ready?
     + Yes??[]... I think so...
-        :BIGBADAUD999: good.... 
-        :BIGBADAUD999: when u ready, you KNOW you ready
-        :BIGBADAUD999: this is a big mission, a long con one may call it...
-        :BIGBADAUD999: not gonna give too many details, im sure youll cathc on...
-        :BIGBADAUD999: *catch
-        :BIGBADAUD999: ill give you a choice between a few locations. once you arrive, you'll know what you have to do....
-        fulphide laptop
+        :Auditor: good.... 
+        fulpunlock 58133
+        :Auditor: when u ready, you KNOW you ready
+        :Auditor: this is a big mission, a long con one may call it...
+        :Auditor: not gonna give too many details, im sure youll cathc on...
+        :Auditor: *catch
+        :Auditor: ill give you a choice between a few locations. once you arrive, you'll know what you have to do....
+        fulphideall
         -> choose_route
     + [No??]
         Everything goes black.
@@ -31,12 +32,12 @@
     =choose_route
         fulpfadeout
         {|"Once you arrive, you'll know what you have to do."}
-        * [Mall]                               -> hank_intro -> choose_route    
+        * [Mall]                               -> hank_intro -> interludes ->choose_route    
         * {hank_intro} [Cemetary]               -> hank_park -> interludes -> choose_route
         * {hank_intro} [Hank's House]               ->hank_gamer -> interludes -> choose_route
-        * [Nightclub]                       -> deimos_sanford_intro -> choose_route
+        * [Nightclub]                       -> deimos_sanford_intro -> interludes -> choose_route
         * {deimos_sanford_intro} [Gas Station]  -> deimos_sanford -> interludes -> choose_route
-        * {deimos_sanford_intro} [Mall]         -> deimos_sanford_mall -> interludes ->choose_route
+        //* {deimos_sanford_intro} [Mall]         -> deimos_sanford_mall -> interludes ->choose_route
         * {deimos_sanford and deimos_sanford_mall} [Sanford/Deimos ending] -> deimos_sanford_ending -> interludes -> choose_route
         * {hank_park and hank_gamer} [Hank ending] -> hank_ending -> interludes -> choose_route
         - Finished game??
@@ -44,18 +45,20 @@
 
 == interludes ==
     YOU HEAD BACK TO THE LAB
+    fulpactor auditor
     {-> second_interlude | -> thrid_interlude | -> final_interlude | ->->}
     = intro_interlude
-        In the beginning interlude, you and the auditor do shit i guess
+        :Auditor: .....
+        :Auditor: interesting.....
         ->is_away
     = second_interlude
-        :BIGBADAUD999: so, have you caught on yet?
+        :Auditor: so, have you caught on yet?
         * yeah, i think so....
-        - :BIGBADAUD999: good... very good...
-        :BIGBADAUD999: yeah
-        :BIGBADAUD999: you seem to be deceiving them well
-        :BIGBADAUD999: its not going to be too long before youre right in with them
-        :BIGBADAUD999: and when theyre ready...
+        - :Auditor: good... very good...
+        :Auditor: yeah
+        :Auditor: you seem to be deceiving them well
+        :Auditor: its not going to be too long before youre right in with them
+        :Auditor: and when theyre ready...
         * ready for what?
         - 
         * whats gonna happen?
@@ -69,7 +72,8 @@
         You try and convince the Auditor that the boys are good and they aren't as bad as he thinks. He cuts off contact with you, but only after he threatens to murder you. Even though he has the power to do so as he pleases....
         ->is_away
     = is_away
-        BIGBADAUD999 is away.
+        fulphideall
+        Auditor is away.
         ...
         ->->
 
@@ -152,7 +156,9 @@
     :Hank: But it's one that is important...
     * [You let Hank continue]
     - 
-    :Hank:
+    fulpfadeout
+    fulphide hank
+    fulphide hank2
     Hank explains to you the signifigance of this cemetary.
     He tells you about the boombox guy.
     But really it's not too signifigant or anything.
@@ -234,6 +240,7 @@
     * [Stay overnight]
         :Hank: Hell yeah! Sleepover!
         You stay overnight.
+        fulpfadeout
         You and Hank have a good night together, watching wacky internet videos, eating more pizza.
         YOU BOTH GO TO SLEEP AND ABSOLUTELY NO GAY SHIT HAPPENS
         In the morning, you wake up and Hank makes you a bowl of cereal.
@@ -242,15 +249,17 @@
         :Hank: Alright no problem!
         :Hank: I hope you have a safe trip back home my good friend!
         :Hank: I had a very fun evening with you!
+        fulpfadeout
         You head home.
     - 
+    fulphideall
     ->->
     
 == hank_ending ==
     This is the Hank ending.
     Maybe he leaves you to go on a killing spree or something.
     blah blah blah whatever insert some ending here.
-    Also shit he shows you his realistic eyes
+    //Also shit he shows you his realistic eyes
     
     ->->
     
@@ -296,7 +305,8 @@
         A man, presumably Deimos, walks up to you both.
         :Sanford: This my guy Deimos
         Why don't I give you my nubmer, and you can teach me a thing or two.
-    - 
+    - You go on your way and go back to the lab
+    This is going good so far.
     
     ->->
 
@@ -325,6 +335,8 @@
         :Deimos: Heheheh
         - - (icecream_waiting)
         * * [You all stand in line and wait to order]
+        // SHIT GETS BUSTED here
+        //LIKE SUPER BUSTED
         {There's a few people in front of you. You are all gonna have to wait a hot minute for some ice cream |The line progresses slightly forward. Hopefully the icecream isn't melted by the time you get to the front...|Alright, the guy in front of you is ordering...and he's taking forever....for a one scoop plain cone....|->exit_loop_icecream}
         ->icecream_waiting
         //There's probably an easier way to do this.
@@ -515,7 +527,7 @@
     * {not in_car} [You get in the car]
     * ->
     -
-    fulpsetbg carinside.jpg
+    fulpsetbg GasStation.png
     s
     fulpactor sanford
     fulpactor deimos
@@ -555,6 +567,7 @@
     The car follows a rough path up the sides. It reaches a spot that overlooks the plains and you can see the town far off in the distance.
     Sanford turns the car off.
     :Sanford: Here we are!
+    fulpsetbg cliff.png
     * [You all get out of the car]
     - You look at the Nevada horizon. 
     You and Deimos lean up against the hood of the car, together you watch the sun as it dips and falls behind the far away mountains.
@@ -588,12 +601,13 @@
     :Sanford: How many times do I need to tell you not to eat whatever car jerky you find?
     :Deimos: Eh whatever
     :Deimos: That stuff still a little tasty
-    //fadeout
+    fulpfadeout
     You all enjoy the sunset and eating food together. You finish some snacks, while you hang out with your bros.
     The evening was tranquil, outside of town not too much happens. 
     ESPECIALLY NOT GAY SHIT, NO GAY SHIT HAPPENED.
     The boys drive back into town with you, and they drop you off.
     You head home.
+    fulphideall
     ->->
 
 == deimos_sanford_ending

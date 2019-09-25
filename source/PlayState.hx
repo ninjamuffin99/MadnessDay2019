@@ -25,6 +25,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.addons.editors.pex.FlxPexParser;
 import flixel.effects.particles.FlxEmitter;
 import flixel.system.FlxSound;
+import io.newgrounds.NG;
 using flixel.util.FlxStringUtil;
 using StringTools;
 
@@ -104,7 +105,7 @@ class PlayState extends FlxState
 		emitter = new FlxEmitter(0, FlxG.height);
 		FlxPexParser.parse(AssetPaths.particle__pex, AssetPaths.texture__png, emitter, 1);
 		emitter.start(false, 0.2);
-		add(emitter);
+		//add(emitter);
 
 		var fakeBold = new FlxTextFormat(FlxColor.BLACK, false, false, FlxColor.BLACK);
 		var textFormat = new FlxTextFormat(FlxColor.WHITE, false, false, FlxColor.WHITE);
@@ -168,12 +169,6 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		FlxG.watch.addMouse();
-
-		if (FlxG.keys.justPressed.M)
-			blackBG.animation.play("noname");
-		if (FlxG.keys.justPressed.N)
-			blackBG.animation.play("name");
-
 
 		if (FlxG.keys.justPressed.I)
 			save();
@@ -471,6 +466,13 @@ class PlayState extends FlxState
 			
 			switch (command) 
 			{
+				case "unlock":
+					if (NGio.isLoggedIn)
+					{
+						var hornyMedal = NG.core.medals.get(Std.parseInt(args[0].trim()));
+						if (!hornyMedal.unlocked)
+							hornyMedal.sendUnlock();
+					}
 				case "log":
 					FlxG.log.add(args.slice(0).join(" ").trim());
 				case "fadein":
@@ -528,6 +530,8 @@ class PlayState extends FlxState
 				case "wait":
 					if (args[0] != null)
 						tmr = Std.parseFloat(args[0]);
+				case "hideall":
+					grpActors.forEach(function(act:Actor){act.visible = false;});
 				default:
 					FlxG.log.add("Busted command somewhere....");
 					
