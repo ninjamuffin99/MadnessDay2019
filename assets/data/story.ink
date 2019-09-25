@@ -1,20 +1,34 @@
 ->auditor_shit
 ==auditor_shit==
     You get out of some test tubes or something.
+    fulpsetbg medbay.png
+    fulpfadein
+    s
+    You appear to be in a lab of some kind.
     You walk up to a computer with a chat app open.
     {|There's a daed body lying on the floor| There's two bodies lying on the ground in front of the computer. They both seem to be daed...| There's a group of dead bodies on the floor... all dead...| There's a group of dead bodies on the floor... all dead...| There's so many bodies, you have to wade through them to get ot the computer |There are so many bodies all around you, you cannot even get to the computer}
-    :BIGBADAUD999: Are you ready?
-    + Yes[]... I think so...
-        :BIGBADAUD999: good.... ive had some intel prepped...
+    :BIGBADAUD999: u up?
+    + [new phone who dis?]
+    -
+    :BIGBADAUD999: alright {~very good....|nice|cool cool}
+    :BIGBADAUD999: {~ay|yo} you ready?
+    + Yes??[]... I think so...
+        :BIGBADAUD999: good.... 
+        :BIGBADAUD999: when u ready, you KNOW you ready
+        :BIGBADAUD999: this is a big mission, a long con one may call it...
+        :BIGBADAUD999: not gonna give too many details, im sure youll cathc on...
+        :BIGBADAUD999: *catch
+        :BIGBADAUD999: ill give you a choice between a few locations. once you arrive, you'll know what you have to do....
         -> choose_route
-    + [No]
+    + [No??]
         Everything goes black.
+        fulpfadeout
+        s
         ->auditor_shit
     
     =choose_route
-    
-        CUTE BOY TRACKER
-        * [Cliff]                               -> hank_intro -> choose_route    
+        {|"Once you arrive, you'll know what you have to do."}
+        * [Mall]                               -> hank_intro -> choose_route    
         * {hank_intro} [Cemetary]               -> hank_park -> interludes -> choose_route
         * {hank_intro} [Hank's House]               ->hank_gamer -> interludes -> choose_route
         * [Gay Nightclub]                       -> deimos_sanford_intro -> choose_route

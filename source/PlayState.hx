@@ -477,6 +477,7 @@ class PlayState extends FlxState
 					FlxG.log.add("Fading out");
 				case "setbg":
 					bg.loadGraphic("assets/images/bgs/" + args[0].trim());
+					trace("Tried to load the -" + args[0] + "- background" );
 					bg.setGraphicSize(0, FlxG.height);
 					bg.updateHitbox();
 				case "hide":
