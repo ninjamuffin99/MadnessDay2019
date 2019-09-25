@@ -82,21 +82,32 @@
     You walk around for a while, aimlessly strolling through the shops.
     When suddenly
     You see him.
-    fulpactor Hank2 300 100
+    fulpactor hank2 300 100
+    fulpactor hank 300 100
+    fulphide hank
     You introduce yourself and he introduces himself. 
     You hit on him, and he hits on you poorly.
-    
+    fulpfadeout
+    fulpwait 2
+    fulphide hank2
     ->->
 
 == hank_park ==
+    It is a lovely day for a stroll!
+    Perhaps to the....
+    fulpfadein
+    fulpsetbg cemetary.png
+    Cemetary!
     * [You decide to take a stroll to the cemetary.]
-    - It's a nice red day out today. There are other people hanging around the cemetary.
+    - 
+    It's all red and shit outside
     An overall lovely and nice day.
     * [Sit down at a bench]
     - 
     It's a nice and comfy bench. It's a standard bench made of wood and metal. Nothing too crazy about it.
     :????:Yooooooo!
     You turn and who else do you see than your good old pal Hank!
+    fulpactor hank
     :Hank: Hey pal! What's up!
     * [You tell Hank your recent shenanigans]
     * [The sky]
@@ -152,27 +163,29 @@
     ->->
 
 ==hank_gamer
-    You roll up to a decent looking house. There's not really any neighbours or anything. A lone house on the side of this street.
+    You roll up to a decent looking house.
+    fulpfadein
+    fulpsetbg hanksdoor.png
+    There's not really any neighbours or anything. A lone house on the side of this street.
     You go up to the door, and before you can knock, well would you look at that, Hank answers the door!
+    fulpactor hank2
     :Hank: Hello! My good friend! Welcome to my hous!
     Hank greets you and gestures you to come inside with him
+    fulpsetbg hankshouse.png
     You follow him. The living room, where he has a niceflatscreen TV, and a few gaming consoles hooked up.
     :Hank: Hey make yourself at home!
-    Well, you do. You plop down on the couch in the living room. On the coffee table there's an art book of some kind.
+    Well, you do. You plop down on the couch in the living room.
     :Hank: Hey you need anything? I got uhhhhh some soda. A lot of it.
     * (gingerale) [Ginger Ale]
     * (rootbeer) [Root Beer]
     * (cola) [Cola]
-    * (water)[Water]
-    * (no_drink)[Nothing]
+    * (water) [Water]
+    * (no_drink) [Nothing]
     - :Hank: {no_drink: Huh, alright no problem friend.|Alright, a big ol {water:glass|can} of {gingerale:ginger ale}{rootbeer: rootbeer}{cola: Coke}{water:water} for my pal}
     {not no_drink:Hank {water:brings you|tosses you} the {water:glass|can} of {gingerale:ginger ale}{rootbeer: rootbeer}{cola: Coke}{water:water}}
-    * {not no_drink and not water} [You crack the can open.]
-        The carbonated drink fizzes away.
-    - 
-    * {not no_drink} [You take a sip]
-        It hits the right spot. Living out here in Nevada sure makes you thirsty!
-    - 
+    
+    {not no_drink and not water: You crack the can open. The carbonated drink fizzes away.}
+    {not no_drink:  You take a sip. It hits the right spot. Living out here in Nevada sure makes you thirsty!}
     Hank sits down on the chair beside the couch. He grabs the controller to the game console and turns the system on.
     :Hank: Wanna play some video games my good friend?
     * (is_gaming) [Gaming time]

@@ -452,13 +452,13 @@ class PlayState extends FlxState
 		// DUNNO WHY, THIS SHIT NEEDS TO BE HERE
 		var message:String = inkStory.currentText.trim();
 		
-		if (message.toLowerCase().startsWith(prefix))
+		while (message.toLowerCase().startsWith(prefix))
 		{
 			var args:Array<String> = message.substr(prefix.length).split(" ");
 			var command = args.shift().toLowerCase().trim();
 			FlxG.log.add(command);
 			trace(args);
-			var tmr:Float = 0;
+			var tmr:Float = 0.1;
 
 			if (args[0] != null)
 				curArg = args[0].toLowerCase().trim();
@@ -527,6 +527,14 @@ class PlayState extends FlxState
 					
 			}
 			
+			if (inkStory.canContinue)
+			{
+				inkStory.Continue();
+			}
+			else
+				break;
+			message = inkStory.currentText.trim();
+			/* 
 			// make this better lol
 			new FlxTimer().start(tmr, function(tim:FlxTimer)
 			{
@@ -537,6 +545,7 @@ class PlayState extends FlxState
 					fulpCheck();
 				}
 			});
+			 */
 		}
 	}
 
