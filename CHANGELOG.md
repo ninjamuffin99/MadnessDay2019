@@ -1,5 +1,9 @@
 # CHANGELOG
 ## [Unreleased]
+### Added
+- Current version to the bottom of the menu screen lmao
+- A working font lmao
+
 ### Fixed
 - Typos and a few scripting fixes
 

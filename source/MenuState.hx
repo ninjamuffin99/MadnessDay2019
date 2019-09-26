@@ -4,6 +4,7 @@ import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.util.FlxColor;
+import flixel.text.FlxText;
 
 class MenuState extends FlxState
 {
@@ -16,6 +17,9 @@ class MenuState extends FlxState
         titleScreen.updateHitbox();
         titleScreen.antialiasing = true;
         add(titleScreen);
+
+        var curVer:FlxText = new FlxText(5, FlxG.height - 20, 0, "0.1.2", 16);
+        add(curVer);
 
         FlxG.sound.playMusic(AssetPaths.title__mp3, 0.7);
 

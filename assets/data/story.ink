@@ -1,18 +1,8 @@
 ->auditor_shit
 ==auditor_shit==
-
-
-    
     You get out of some test tubes or something.
     fulpsetbg medbay.png
     fulpfadein
-    bla
-    You're getting pretty sleepy
-    You go and leave the room. You close your eyes and go to sleep.
-    fulpFadeOut
-    Your eyes are closed and you can only see black.
-    
-    
     You appear to be in a lab of some kind.
     You walk up to a computer with a chat app open.
     fulpactor auditor 300 100
@@ -607,7 +597,7 @@
         :Sanford: Come on Deimos quit bein weird about it
     - The boys take a bite of their sandwiches{ate_sandwich: as well|.}
     :Deimos: Man this shit is good
-    :Deimos: I needed something to get the stale jerky taste out of my mouth...
+    {grabbed_jerky: :Deimos: I needed something to get the stale jerky taste out of my mouth...}
     :Sanford: How many times do I need to tell you not to eat whatever car jerky you find?
     :Deimos: Eh whatever
     :Deimos: That stuff still a little tasty

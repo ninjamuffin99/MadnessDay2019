@@ -110,18 +110,18 @@ class PlayState extends FlxState
 		var fakeBold = new FlxTextFormat(FlxColor.BLACK, false, false, FlxColor.BLACK);
 		var textFormat = new FlxTextFormat(FlxColor.WHITE, false, false, FlxColor.WHITE);
 
-		curName = new FlxText(60, blackBG.y - 16, 190, "Test", 52);
+		curName = new FlxText(60, blackBG.y - 20, 190, "Test", 44);
 		curName.autoSize = false;
 		curName.alignment = CENTER;
-		curName.font = "assets/data/blackpool_gothic_nbp.ttf";
+		curName.font = AssetPaths.TurretRoad_Bold__ttf;
 		curName.setBorderStyle(OUTLINE, FlxColor.BLACK, 0.5);
 		curName.addFormat(fakeBold);
 		add(curName);
 
 		setBox();
 		
-		autoText = new TypeTextTwo(30, textY, Std.int(blackBG.width - 30), dialogueClean, 42);
-		autoText.font = "assets/data/blackpool_gothic_nbp.ttf";
+		autoText = new TypeTextTwo(30, textY - 10, Std.int(blackBG.width - 40), dialogueClean, 36);
+		autoText.font = AssetPaths.TurretRoad_Regular__ttf;
 		// autoText.setBorderStyle(OUTLINE, FlxColor.WHITE, 0.3);
 		autoText.addFormat(textFormat);
 		autoText.setTypingVariation(0.3);
