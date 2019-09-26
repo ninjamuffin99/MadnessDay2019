@@ -1,5 +1,5 @@
 # CHANGELOG
-## [Unreleased]
+## [0.1.2] - 2019-09-26
 ### Added
 - Current version to the bottom of the menu screen lmao
 - A working font lmao
