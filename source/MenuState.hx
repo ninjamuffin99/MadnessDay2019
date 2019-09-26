@@ -26,6 +26,23 @@ class MenuState extends FlxState
 
     override public function update(elapsed:Float):Void
     {
+        if (FlxG.onMobile)
+		{
+			for (touch in FlxG.touches.list)
+			{
+				if (touch.justPressed)
+				{
+					isFading = true;
+                    FlxG.sound.play(AssetPaths.titleSelect__mp3, 0.9);
+                    FlxG.sound.music.volume *= 0.5;
+                    FlxG.sound.music.fadeOut(1);
+                    FlxG.camera.fade(FlxColor.WHITE, 1, false, function(){FlxG.switchState(new PlayState());}, true);
+				}
+			}
+			
+			
+		}
+
         if ((FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.SPACE) && !isFading)
         {
             isFading = true;

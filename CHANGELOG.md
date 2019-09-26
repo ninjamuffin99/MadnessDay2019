@@ -1,5 +1,7 @@
 # CHANGELOG
 ## [Unreleased]
+### Fixed
+- Typos and a few scripting fixes
 
 ## [0.1.1] - 2019-09-25
 ### Added

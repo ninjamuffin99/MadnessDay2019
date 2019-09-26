@@ -113,7 +113,7 @@ class PlayState extends FlxState
 		curName = new FlxText(60, blackBG.y - 16, 190, "Test", 52);
 		curName.autoSize = false;
 		curName.alignment = CENTER;
-		curName.font = AssetPaths.blackpool_gothic_nbp__ttf;
+		curName.font = "assets/data/blackpool_gothic_nbp.ttf";
 		curName.setBorderStyle(OUTLINE, FlxColor.BLACK, 0.5);
 		curName.addFormat(fakeBold);
 		add(curName);
@@ -121,7 +121,7 @@ class PlayState extends FlxState
 		setBox();
 		
 		autoText = new TypeTextTwo(30, textY, Std.int(blackBG.width - 30), dialogueClean, 42);
-		autoText.font = AssetPaths.blackpool_gothic_nbp__ttf;
+		autoText.font = "assets/data/blackpool_gothic_nbp.ttf";
 		// autoText.setBorderStyle(OUTLINE, FlxColor.WHITE, 0.3);
 		autoText.addFormat(textFormat);
 		autoText.setTypingVariation(0.3);
@@ -232,13 +232,20 @@ class PlayState extends FlxState
 						grpChoices.add(choiceTxt);
 						choiceTxt.screenCenter(X);
 						
+					}
+				}
+				else
+				{
+					 
+					grpChoices.forEach(function(choiceTxt:FlxText)
+					{
 						if (FlxG.onMobile)
 						{
 							for (touch in FlxG.touches.list)
 							{
 								if (touch.overlaps(choiceTxt) && touch.justPressed)
 								{
-									if (curSelected == i)
+									if (curSelected == choiceTxt.ID)
 									{
 										inkStory.ChooseChoiceIndex(curSelected);
 										inkStory.Continue();
@@ -247,25 +254,21 @@ class PlayState extends FlxState
 										autoText.start(null, true);
 										
 										justSelected = true;
+										FlxG.sound.play(AssetPaths.select__mp3, 0.3);
 									}
 									else
-										curSelected = i;
+									{
+										FlxG.sound.play(AssetPaths.gunUp__mp3);
+										curSelected = choiceTxt.ID;
+									}
+										
 								}
 							}
 							
 							
 						}
-					}
-				}
-				else
-				{
-					/* 
-					for (i in 0...grpChoices.members.length)
-					if (i != curSelected)
-						grpChoices.members[i].alpha = 0.3;
-					else
-						grpChoices.members[i].alpha = 1;
-					*/
+
+					});
 				}
 				
 				
@@ -281,7 +284,7 @@ class PlayState extends FlxState
 					autoText.start(null, true);
 					
 					justSelected = true;
-				}	
+				}
 			}
 			else
 				highLight.visible = false;

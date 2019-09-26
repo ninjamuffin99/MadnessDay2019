@@ -1,8 +1,18 @@
 ->auditor_shit
 ==auditor_shit==
+
+
+    
     You get out of some test tubes or something.
     fulpsetbg medbay.png
     fulpfadein
+    bla
+    You're getting pretty sleepy
+    You go and leave the room. You close your eyes and go to sleep.
+    fulpFadeOut
+    Your eyes are closed and you can only see black.
+    
+    
     You appear to be in a lab of some kind.
     You walk up to a computer with a chat app open.
     fulpactor auditor 300 100
@@ -26,7 +36,7 @@
     + [No??]
         Everything goes black.
         fulpfadeout
-        fulphide laptop
+        fulphide auditor
         ->auditor_shit
     
     =choose_route
@@ -45,7 +55,7 @@
 
 == interludes ==
     YOU HEAD BACK TO THE LAB
-    fulpactor auditor
+    //fulpactor auditor
     {-> second_interlude | -> thrid_interlude | -> final_interlude | ->->}
     = intro_interlude
         :Auditor: .....
@@ -69,7 +79,8 @@
         You and the Auditor get into a sort of argument about things. He warns you about what will happen if you don't listen to him.
         ->is_away
     = final_interlude
-        You try and convince the Auditor that the boys are good and they aren't as bad as he thinks. He cuts off contact with you, but only after he threatens to murder you. Even though he has the power to do so as he pleases....
+        You try and convince the Auditor that the boys are good and they aren't as bad as he thinks. He cuts off contact with you, but only after he threatens to murder you.
+        
         ->is_away
     = is_away
         fulphideall
@@ -156,10 +167,10 @@
     :Hank: But it's one that is important...
     * [You let Hank continue]
     - 
+    Hank explains to you the signifigance of this cemetary.
     fulpfadeout
     fulphide hank
     fulphide hank2
-    Hank explains to you the signifigance of this cemetary.
     He tells you about the boombox guy.
     But really it's not too signifigant or anything.
     It's just some dumbass nowhere story.
@@ -173,7 +184,7 @@
     There's not really any neighbours or anything. A lone house on the side of this street.
     You go up to the door, and before you can knock, well would you look at that, Hank answers the door!
     fulpactor hank2
-    :Hank: Hello! My good friend! Welcome to my hous!
+    :Hank: Hello! My good friend! Welcome to my house!
     Hank greets you and gestures you to come inside with him
     fulpsetbg hankshouse.png
     You follow him. The living room, where he has a niceflatscreen TV, and a few gaming consoles hooked up.
@@ -272,7 +283,7 @@
     Couldn't get enough
     Had to get you straight to my bedroom
     You meet Deimos and Sanford
-    They are jammin and shit. You check your phone and you get intel from The Auditor, he tells you which song to request the DJ Tricky to play.
+    They are jammin and shit. You check your phone and you get intel from The Auditor, he tells you which song to request DJ Tricky to play.
     The boys are really into it.
     * [You walk to the center of the dance floor.]
     - Everyone is looking at you!
@@ -304,7 +315,7 @@
         :Sanford: Yo Deimos, come check this dude out.
         A man, presumably Deimos, walks up to you both.
         :Sanford: This my guy Deimos
-        Why don't I give you my nubmer, and you can teach me a thing or two.
+        Why don't I give you my number, and you can teach me a thing or two.
     - You go on your way and go back to the lab
     This is going good so far.
     
@@ -490,18 +501,18 @@
     fulpactor sanford 50 60
     fulpactor deimos 400 60
     fulphide deimos
-    :Sanford: "Ah hello! Good to see you!" 
+    :Sanford: Ah hello! Good to see you!"
     He's currently pumping gas into their car. 
-    :Sanford: "Deimos is inside getting some snacks.
+    :Sanford: Deimos is inside getting some snacks.
     * (in_store) [Go inside with Deimos]
         You head inside the gas station.
         fulpsetbg 711Inside.jpg
         fulphide sanford
         fulpactor deimos 400 60
         You see Deimos.
-        :Deimos: "Yooo!" 
+        :Deimos: Yooo!
         Deimos is holding a variety of snacks and sodas. "
-        :Deimos: I'm just grabbin' a bunch of snacks. Nab what you want from here, I gotchu.
+        :Deimos: I'm just grabbin' a bunch of snacks and some smokes. Nab what you want from here, I gotchu.
         Aw sweet. What a nice guy :3
         Well you're in a gas station, your options are a bit limited.
         * * (buy_candy) You get some candy[], specifically a nice chocolate bar and some gummies.
@@ -509,9 +520,9 @@
         * * (buy_soda) You get a bottle of soda[]. Just some cola will do. As long as that shit is fizzy and roughens your teeth up, it's good enough for you.
         * * (buy_nothing) You get nothing[]. Don't wanna feel like a schmooze when you guys are hanging out for the first time.
         - - You walk up to the counter with Deimos. {buy_nothing: Deimos places his snacks on the counter| You place your {buy_candy: candy}{buy_jerky: jerky}{buy_soda: soda} on the counter along with Deimos' snacks.}
-        {not buy_nothing: As promised, Deimos buys you your stuff, what a gentleman. Both of you head out the store. Sanford seems to be finsihing up the fill up too.}
+        {not buy_nothing: As promised, Deimos buys you your stuff, what a gentleman. Both of you head out the store. Sanford seems to be finsihing the fill up as well.}
     * (in_car) Stay with Sanford
-        :Sanford: "It's a little breezy out today, feel free to hop in the backseat bud."
+        :Sanford: It's a little breezy out today, feel free to hop in the backseat bud.
         You hop in the backseat of the car. There's a little bit of trash in the backseat. Some empty chip bags, candy wrappers, and a half eaten bag of beef jerky.
         Grab some?
         * * (grabbed_jerky) [Yes]
@@ -523,34 +534,33 @@
         * * [No]
             You decide not to grab a piece. Maybe it was just a trap.... Maybe it was a test.... Deimos and Sanford are seeing if you trying to sneak some of their secret stash of jerky.... Well, well, well, looks like you may have passed. 
         - - Just as Sanford finishes up the fill up, Deimos comes walking out with a bag of snacks.
-    - :Deimos: "Alright, let's bounce!"
+    - :Deimos: Alright, let's bounce!
     * {not in_car} [You get in the car]
     * ->
     -
+    You all get into the car. Deimos in the drivers seat, Sanford riding shotgun. You in the back like a goon.
     fulpsetbg GasStation.png
-    s
     fulpactor sanford
     fulpactor deimos
-    You all get into the car. Deimos in the drivers seat, Sanford riding shotgun. You in the back like a goon.
-    {grabbed_jerky && ate_car_jerky: Deimos sniffs. "Why it smell like jerky? "Huh?" Sanford looks to you. He notices the open bag of jerky. He looks back to you. Now back to the bag.}
+    {grabbed_jerky && ate_car_jerky: Deimos sniffs. Why it smell like jerky? "Huh?" Sanford looks to you. He notices the open bag of jerky. He looks back to you. Now back to the bag.}
     {grabbed_jerky && ate_car_jerky: "Aw nice some leftover jerky!" Deimos grabs a handful of jerky. "Want some?"}
     * {grabbed_jerky && ate_car_jerky} [Grab some]
         You grab some jerky too. Even though you already ate some.... At least he offered it this time rather than you STEALING IT.
-        :Deimos: "Kinda stale huh?"
+        :Deimos: Kinda stale huh?
         You nod in agreement
-    * {grabbed_jerky && ate_car_jerky} "No thanks" 
-        :Deimos: "Alright no biggie" 
+    * {grabbed_jerky && ate_car_jerky} No thanks
+        :Deimos: Alright no biggie" 
         Deimos takes a bite 
-        :Deimos: "This stuff is a little.... stale..."
+        :Deimos: This stuff is a little.... stale...
     * ->
     - Deimos starts the car and it comes to life. 
     The car gets pulled out of the gas station and into the streets. Not too long later you're all on the open highway, driving through the empty grey plains. 
     Nothing in sight other than some power poles and the baren red skyline.
     
     Sanford turns towards you.
-    :Sanford: "So you ever been through this part of the state?"
+    :Sanford: So you ever been through this part of the state?
     * [You tell him about your little travels] 
-    - :Sanford: "Interesting, well just you wait until you see Nevada from up in the cliffsides. You can see the whole town from there"
+    - :Sanford: Interesting, well just you wait until you see Nevada from up in the cliffsides. You can see the whole town from there
     You're getting a little bored, and hungry too.
     {buy_nothing: Maybe you should have gotten some food... | Good thing Deimos bought some {buy_candy: candy}{buy_jerky: jerky}{buy_soda: soda} for you.}
     * (eating_snacks) {in_store && not buy_nothing} [{in_store && not buy_nothing: You {buy_soda:crack }open your{buy_candy: candy}{buy_jerky: jerky}{buy_soda: soda} and {buy_soda: take a sip | eat some.}}]
@@ -560,7 +570,7 @@
     * ->
     - 
     Sanford turns the radio on. Some cool ass drum and bass techno ass music starts playing and breaks the somewhat awkward silence. 
-    :Deimos: "Hell yeah"
+    :Deimos: Hell yeah
     This music sets the mood nicely. Three homies cruising through Nevada listening to cool ass drum and bass techno ass music. Few words are being spoken, but you feel the bond forming between you three, as you join them on this small little adventure.
     
     Cliffsides off in the distance ahead of the car start moving towards you. It's not too long when the car approaches it.
