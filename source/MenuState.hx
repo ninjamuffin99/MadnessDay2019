@@ -5,6 +5,8 @@ import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.text.FlxText;
+import lime.app.Application;
+
 
 class MenuState extends FlxState
 {
@@ -18,7 +20,8 @@ class MenuState extends FlxState
         titleScreen.antialiasing = true;
         add(titleScreen);
 
-        var curVer:FlxText = new FlxText(5, FlxG.height - 20, 0, "v0.1.3", 16);
+        var metadata = Application.current.meta;
+        var curVer:FlxText = new FlxText(5, FlxG.height - 20, 0, metadata.get('version'), 16);
         add(curVer);
 
         FlxG.sound.playMusic(AssetPaths.title__mp3, 0.7);

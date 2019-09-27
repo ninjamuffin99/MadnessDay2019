@@ -65,6 +65,8 @@ class PlayState extends FlxState
 	{
 		FlxG.save.bind("File");
 		P = FLS.JSON.playstate;
+		persistentDraw = false;
+		persistentUpdate = false;
 		
 		bg = new FlxSprite(0, 0).makeGraphic(1, 1, FlxColor.TRANSPARENT);
 		add(bg);
@@ -175,6 +177,9 @@ class PlayState extends FlxState
 			save();
 		if (FlxG.keys.justPressed.K)
 			load();
+		
+		if (FlxG.keys.justPressed.ENTER)
+			openSubState(new SubstatePause());
 
 		if (FlxG.keys.justPressed.O)
 			FlxG.switchState(new ink.ScriptViewer());
