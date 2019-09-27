@@ -69,8 +69,9 @@ class PlayState extends FlxState
 		bg = new FlxSprite(0, 0).makeGraphic(1, 1, FlxColor.TRANSPARENT);
 		add(bg);
 
+		#if !debug
 		var ng:NGio = new NGio(APIStuff.APIKEY, APIStuff.ENCKEY);
-		
+		#end
 		//var overlay:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.placeholderBG__png);
 		//add(overlay);
 
@@ -193,6 +194,9 @@ class PlayState extends FlxState
 			trace(inkStory.state.storySeed);
 
 		var justSelected:Bool = false;
+
+		FlxG.watch.addQuick("Choices: ", grpChoices.length);
+		FlxG.watch.addQuick("Buffer:  ", grpChoicesBuffer.length);
 		
 		grpChoiceBGs.forEach(function(bg:FlxSprite){grpChoiceBGs.remove(bg, true); });
 		
@@ -308,9 +312,10 @@ class PlayState extends FlxState
 		{
 			highLight.visible = false;
 		}
-		
-		if (inkStory.currentChoices.length == 0 && grpChoices.length > 0)
+
+		if (justSelected)
 		{
+			trace("Deleted shit");
 			grpChoicesBuffer.forEach(function(txt:FlxText){grpChoicesBuffer.remove(txt, true);});
 			while(grpChoices.members.length > 0)
 			{
@@ -318,10 +323,7 @@ class PlayState extends FlxState
 				grpChoicesBuffer.add(grpChoices.members[0]);
 				grpChoices.remove(grpChoices.members[0], true);
 			}
-		}
 
-		if (justSelected)
-		{
 			trace("just selected " + curSelected + " " + grpChoicesBuffer.length);
 			for (i in 0...grpChoicesBuffer.members.length)
 			{

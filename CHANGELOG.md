@@ -1,5 +1,9 @@
 # CHANGELOG
-## [UNRELEASED]
+## [0.1.3] - 2019-09-27
+### Changed
+- Fleshed out the Hank intro
+### Fixed
+- When a choice immediately follows another choice, the 2nd choice shows normally.
 
 ## [0.1.2] - 2019-09-26
 ### Added

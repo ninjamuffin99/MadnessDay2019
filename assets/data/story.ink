@@ -1,3 +1,4 @@
+//INTRO DEBUG SHIT
 ->auditor_shit
 ==auditor_shit==
     You get out of some test tubes or something.
@@ -83,16 +84,39 @@
     fulpfadein
     fulpsetbg mall.png
     You walk around for a while, aimlessly strolling through the shops.
-    When suddenly
-    You see him.
+    When suddenly.
+    WHAM!
     fulpactor hank2 300 100
     fulpactor hank 300 100
     fulphide hank
-    You introduce yourself and he introduces himself. 
-    You hit on him, and he hits on you poorly.
+    This dude slams into you!
+    :????: Ow ow ow...
+    :????: Oh sorry!
+    He helps you back to your feet.
+    :????: Hello, my name is Hank!
+    :Hank: So uh sorry about that, but I gotta get somewhere!
+    * [WAIT]
+    * [Without giving me your number?]
+    - :Hank: Huh?
+    :Hank: Did you need something?
+    * [I need you... in my life....]
+        :Hank: Huh? Why is that?
+        * * [To teach me how to be COOL]
+        * * [To teach me how to KILL]
+        * * [To teach me how to LOVE]
+    * [I-I uh.. d-do you wa-wanna play some video games??]
+        :Hank: I love video games!
+    * [Yo, let's hang bro]
+    - :Hank: Hmm....
+    :Hank: Hell yeah!
+    :Hank: You pretty cool!
+    :Hank: I will give you my phone number
+    :Hank: Hit me up if you want to hang out and play video games!
+    fulphideall
+    Hank goes on his way.
+    Seems like a successful meetup!
     fulpfadeout
     fulpwait 2
-    fulphide hank2
     ->->
 
 == hank_park ==
@@ -142,7 +166,8 @@
         //show the WE ARE GOING TO BEAT YOU TO DEATH meme
         :Hank: This one is a good one! Can you explain the joke for me?!
         * * [Hey madness grunt here to explain the joke]
-        - - What's funny about this joke is....
+        - - :Hank: Yes! Go on!
+        
         * * [They are actually really nice]
         - -
     * [No meme for hank]
@@ -227,7 +252,7 @@
     * [Watch cringe compilations]
     - You find a playlist of videos about pickup artists.
     :Hank: Woah! Is this how I should make friends??
-    * [You explain that this is the OPPOSITE of how you interact with people]
+    * [You explain cringe vids to him]
     - :Hank: Huh, alright I see!
     :Hank: I'm getting a bit hungry, I'm going to order a pizza pie!
     Hank orders a pizza pie.
@@ -561,7 +586,7 @@
     - 
     Sanford turns the radio on. Some cool ass drum and bass techno ass music starts playing and breaks the somewhat awkward silence. 
     :Deimos: Hell yeah
-    This music sets the mood nicely. Three homies cruising through Nevada listening to cool ass drum and bass techno ass music. Few words are being spoken, but you feel the bond forming between you three, as you join them on this small little adventure.
+    This music sets the mood nicely. Three homies cruising through Nevada listening to cool ass drum and bass techno ass music. Few words are being spoken, but you feel the bond forming between you three, as you join them on this small little adventure.opposite
     
     Cliffsides off in the distance ahead of the car start moving towards you. It's not too long when the car approaches it.
     The car follows a rough path up the sides. It reaches a spot that overlooks the plains and you can see the town far off in the distance.

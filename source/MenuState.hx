@@ -18,7 +18,7 @@ class MenuState extends FlxState
         titleScreen.antialiasing = true;
         add(titleScreen);
 
-        var curVer:FlxText = new FlxText(5, FlxG.height - 20, 0, "0.1.2", 16);
+        var curVer:FlxText = new FlxText(5, FlxG.height - 20, 0, "v0.1.3", 16);
         add(curVer);
 
         FlxG.sound.playMusic(AssetPaths.title__mp3, 0.7);
