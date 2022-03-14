@@ -247,7 +247,7 @@ class PlayState extends FlxState
 				{
 					 
 					grpChoices.forEach(function(choiceTxt:FlxText)
-					{
+					{/* 
 						if (FlxG.onMobile)
 						{
 							for (touch in FlxG.touches.list)
@@ -276,7 +276,7 @@ class PlayState extends FlxState
 							
 							
 						}
-
+ */
 					});
 				}
 				
@@ -360,7 +360,7 @@ class PlayState extends FlxState
 		
 		if (FlxG.keys.justPressed.SPACE)
 			tryAdvText = true;
-		
+		/* 
 		if (FlxG.onMobile)
 		{
 			
@@ -372,7 +372,7 @@ class PlayState extends FlxState
 				}
 			}
 		}
-		
+		 */
 		if (tryAdvText && !justSelected)
 		{
 			

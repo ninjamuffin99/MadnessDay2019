@@ -1,7 +1,7 @@
 package;
 
-import djFlixel.FLS;
-import djFlixel.MainTemplate;
+// import djFlixel.FLS;
+// import djFlixel.MainTemplate;
 import flixel.FlxGame;
 import flixel.FlxState;
 import openfl.Lib;
@@ -10,6 +10,8 @@ import openfl.events.Event;
 
 class Main extends MainTemplate
 {
+
+	
 	
 	override function init() 
 	{
@@ -19,19 +21,15 @@ class Main extends MainTemplate
 		INITIAL_STATE = MenuState;
 		FPS = 60;
 
-		
 		super.init();
 	}
 	
-	
-	
 	public function new()
 	{
-		FLS.extendedClass = Reg;
+		// FLS.extendedClass = Reg;
 		super();
 	}
 
-	
 	public static function main():Void
 	{	
 		Lib.current.addChild(new Main());
