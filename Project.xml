@@ -81,6 +81,6 @@
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
-	<haxelib name="djflixel"/>
+	<!-- <haxelib name="djflixel"/> -->
 	
 </project>
