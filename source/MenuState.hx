@@ -31,8 +31,9 @@ class MenuState extends FlxState
 
     private var isFading:Bool = false;
 
-    override public function update(elapsed:Float):Void
+    override public function    update(elapsed:Float):Void
     {
+        /* 
         if (FlxG.onMobile)
 		{
 			for (touch in FlxG.touches.list)
@@ -49,7 +50,7 @@ class MenuState extends FlxState
 			
 			
 		}
-
+ */
         if ((FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.SPACE) && !isFading)
         {
             isFading = true;
