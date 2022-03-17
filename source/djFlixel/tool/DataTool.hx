@@ -1,4 +1,5 @@
 package djFlixel.tool;
+
 import djFlixel.gfx.GfxTool;
 
 /**
@@ -18,16 +19,17 @@ class DataTool
 	public static function create2DArray<T>(width:Int, height:Int):Array<Array<T>>
 	{
 		#if cpp
-			throw "INCOMPATIBLE WITH CPP";
+		throw "INCOMPATIBLE WITH CPP";
 		#end
-		
+
 		var r:Array<Array<T>> = [];
-		for (y in 0...height) {
+		for (y in 0...height)
+		{
 			r[y] = [];
 		}
 		return r;
-	}//---------------------------------------------------;
-	
+	} //---------------------------------------------------;
+
 	/**
 	 * Apply a function to a string of CSV parameters
 	 * 
@@ -36,17 +38,18 @@ class DataTool
 	 */
 	public static function applyToCSVParams(?csv:String, fn:String->String->Void):Void
 	{
-		if (csv == null) return;
-		
+		if (csv == null)
+			return;
+
 		var pairs:Array<String> = csv.split(',');
 		var d:Array<String>;
 
-		for (p in pairs) {
+		for (p in pairs)
+		{
 			d = p.split(':');
 			fn(d[0], d[1]);
 		}
-		
-	}//---------------------------------------------------;
+	} //---------------------------------------------------;
 
 	/**
 	 * Quick way to get a field from a CSV string.
@@ -59,15 +62,18 @@ class DataTool
 	 */
 	public static function CSVGetQuick(?csv:String, field:String):String
 	{
-		if (csv == null) return null;
+		if (csv == null)
+			return null;
 		var pairs:Array<String> = csv.split(',');
 		var d:Array<String>;
-		for (p in pairs) {
+		for (p in pairs)
+		{
 			d = p.split(':');
-			if (d[0] == field) return d[1];
+			if (d[0] == field)
+				return d[1];
 		}
 		return null;
-	}//---------------------------------------------------;
+	} //---------------------------------------------------;
 
 	/** 
 	 * Creates and returns a union of 2 arrays
@@ -82,20 +88,20 @@ class DataTool
 		var n = ar1.copy();
 		for (i in ar2)
 		{
-			if (n.indexOf(i) < 0) n.push(i);
+			if (n.indexOf(i) < 0)
+				n.push(i);
 		}
 		return n;
-	}//---------------------------------------------------;
-	
+	} //---------------------------------------------------;
+
 	/**
 	 * Quickly get a random element from an array
 	 */
-	inline public static function arrayRandom<T>(ar:Array<T>):T 
+	inline public static function arrayRandom<T>(ar:Array<T>):T
 	{
 		return ar[Std.random(ar.length)];
-	}//---------------------------------------------------;
-	
-	
+	} //---------------------------------------------------;
+
 	/**
 	 * Copy an object's fields into target object. Overwrites the target object's fields. 
 	 * Can work with Static Classes as well (as destination)
@@ -110,20 +116,22 @@ class DataTool
 			// trace("Warning: No fields to copy from source, returning destination object");
 			return into;
 		}
-		
-		if (into == null) 
+
+		if (into == null)
 		{
 			trace("Warning: No fields on the target, copying source object");
 			into = Reflect.copy(from);
-		}else
+		}
+		else
 		{
-			for (f in Reflect.fields(from)) {
+			for (f in Reflect.fields(from))
+			{
 				Reflect.setField(into, f, Reflect.field(from, f));
 			}
 		}
-		
+
 		return into;
-	}//---------------------------------------------------;
+	} //---------------------------------------------------;
 
 	/**
 	 * Copy All Fields AND translates colors. Overwrites the target object's fields. 
@@ -141,50 +149,52 @@ class DataTool
 	 */
 	public static function copyFieldsC(from:Dynamic, ?into:Dynamic):Dynamic
 	{
-		if (into == null) into = {};
+		if (into == null)
+			into = {};
 		if (from != null)
-		
-		for (f in Reflect.fields(from)) 
-		{	
-			var d:Dynamic = Reflect.field(from, f);
-			
-			// f is the name of the field
-			// d is the field data
-			
-			// Convert COLOR string and array of strings to INT
-			if (f.indexOf("color") == 0) {
-				
-				if (Std.is(d, Array))
+			for (f in Reflect.fields(from))
+			{
+				var d:Dynamic = Reflect.field(from, f);
+
+				// f is the name of the field
+				// d is the field data
+
+				// Convert COLOR string and array of strings to INT
+				if (f.indexOf("color") == 0)
 				{
-					var ar:Array<Int> = [];
-					var arS:Array<String> = d;
-					var c:Int = 0;
-					while (c < arS.length) ar.push(GfxTool.stringColor(arS[c++]));
-					Reflect.setField(into, f, ar);
+					if (Std.isOfType(d, Array))
+					{
+						var ar:Array<Int> = [];
+						var arS:Array<String> = d;
+						var c:Int = 0;
+						while (c < arS.length)
+							ar.push(GfxTool.stringColor(arS[c++]));
+						Reflect.setField(into, f, ar);
+						continue;
+					}
+					else if (Std.isOfType(d, String))
+					{
+						Reflect.setField(into, f, GfxTool.stringColor(d));
+						continue;
+					}
+				}
+
+				// Process any object nodes
+				if (Reflect.isObject(d) && !Std.isOfType(d, Array) && !Std.isOfType(d, String))
+				{
+					if (!Reflect.hasField(into, f))
+						Reflect.setField(into, f, {});
+					copyFieldsC(d, Reflect.field(into, f)); // Recursion ftw
 					continue;
 				}
-				else if (Std.is(d, String))
-				{
-					Reflect.setField(into, f, GfxTool.stringColor(d));
-					continue;
-				}
+
+				// Just copy everything else.
+				Reflect.setField(into, f, Reflect.field(from, f));
 			}
-			
-			// Process any object nodes
-			if (Reflect.isObject(d) && !Std.is(d, Array) && !Std.is(d, String))
-			{	
-				if (!Reflect.hasField(into, f)) Reflect.setField(into, f, {});
-				copyFieldsC(d, Reflect.field(into, f));	// Recursion ftw
-				continue;
-			}
-			
-			// Just copy everything else.
-			Reflect.setField(into, f, Reflect.field(from, f));
-		}
-		
+
 		return into;
-	}//---------------------------------------------------;
-	
+	} //---------------------------------------------------;
+
 	/**
 	 * Copy Missing Fields, Copies the fields from the source object that are 
 	 * not present in the destination object. VERY USEFUL to setting default parameters
@@ -200,20 +210,28 @@ class DataTool
 	public static function copyMFields(from:Dynamic, into:Dynamic):Dynamic
 	{
 		#if debug
-			if (from == null) { trace("ERROR: Source object is null"); return null; }
+		if (from == null)
+		{
+			trace("ERROR: Source object is null");
+			return null;
+		}
 		#end
-		
-		if (into == null) into = { }; else into = Reflect.copy(into); // <-- THIS IS VERY IMPORTANT !
-		
-		for (f in Reflect.fields(from)) {
-			if (!Reflect.hasField(into, f)) {
+
+		if (into == null)
+			into = {};
+		else
+			into = Reflect.copy(into); // <-- THIS IS VERY IMPORTANT !
+
+		for (f in Reflect.fields(from))
+		{
+			if (!Reflect.hasField(into, f))
+			{
 				Reflect.setField(into, f, Reflect.field(from, f));
 			}
 		}
 		return into;
-	}//---------------------------------------------------;
-	
-	
+	} //---------------------------------------------------;
+
 	/**
 	 * Pads a string to reach a certain length.
 	 * If string is longer it gets trimmed with a ".." at the end
@@ -222,27 +240,30 @@ class DataTool
 	 */
 	public static function padTrimString(str:String, size:Int, char:String = ".", leftPad:Bool = true):String
 	{
-		if (str.length > size) {
+		if (str.length > size)
+		{
 			// Add a couple of chars in the end to indicate that it was truncated
-			return str.substr(0, size-2) + "..";
+			return str.substr(0, size - 2) + "..";
 		}
-		else if (str.length < size) {
-			if(leftPad)
+		else if (str.length < size)
+		{
+			if (leftPad)
 				return StringTools.lpad(str, char, size);
 			else
 				return StringTools.rpad(str, char, size);
-		}else {
+		}
+		else
+		{
 			// no need to change it
 			return str;
 		}
-	}//---------------------------------------------------;
-	
+	} //---------------------------------------------------;
+
 	// Taken from Franco Ponticelli's THX library:
 	// https://github.com/fponticelli/thx/blob/master/src/Floats.hx#L206
-	public static function roundFloat(number:Float, ?precision=2): Float
+	public static function roundFloat(number:Float, ?precision = 2):Float
 	{
 		number *= Math.pow(10, precision);
 		return Math.round(number) / Math.pow(10, precision);
-	}//---------------------------------------------------;
-	
-}// -- end --//
+	} //---------------------------------------------------;
+} // -- end --//
