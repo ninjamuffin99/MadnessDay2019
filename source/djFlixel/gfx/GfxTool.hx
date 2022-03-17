@@ -19,7 +19,6 @@ import flixel.util.FlxColor;
  */
 class GfxTool
 {
-	
 	/**
 	 * Draws a map as an image to a BitmapData based on 2D array MapData
 	 * 
@@ -39,28 +38,26 @@ class GfxTool
 		var point:Point = new Point();
 		var sTilesInW = Std.int(bsrc.width / tw);
 		var tile:Int;
-		
+
 		bit.lock();
-		
+
 		for (yy in 0...mapheight)
-		for (xx in 0...mapwidth)
-		{
-			tile = mapdata[yy][xx] - 1;
-			
-			if (tile >= 0)
+			for (xx in 0...mapwidth)
 			{
-				rect.setTo( (tile % sTilesInW) * tw, 
-							Std.int(tile / sTilesInW) * th, tw, th);
-				point.setTo(xx * tw, yy * th);
-				bit.copyPixels(bsrc, rect, point);
+				tile = mapdata[yy][xx] - 1;
+
+				if (tile >= 0)
+				{
+					rect.setTo((tile % sTilesInW) * tw, Std.int(tile / sTilesInW) * th, tw, th);
+					point.setTo(xx * tw, yy * th);
+					bit.copyPixels(bsrc, rect, point);
+				}
 			}
-		}
-		
+
 		bit.unlock();
 		return bit;
-	}//---------------------------------------------------;
-	
-	
+	} //---------------------------------------------------;
+
 	/**
 	 * Adds a simple shadow effect to target Bitmap and returns new bitmap
 	 * @param	im The bitmap to apply shadow to, needs to be transparent!
@@ -77,14 +74,16 @@ class GfxTool
 		var _tp = new Point();
 		var n = new BitmapData(cast im.width + Math.abs(offx), cast im.height + Math.abs(offy), true, 0x00000000);
 
-		_ma.tx = offx; _ma.ty = offy;  _tc.color = color;
+		_ma.tx = offx;
+		_ma.ty = offy;
+		_tc.color = color;
 		n.draw(im, _ma, _tc); // The shadow
 		_ma.identity();
 		n.draw(im, _ma); // Overlay, normal
-		
+
 		return n;
-	}//---------------------------------------------------;
-		
+	} //---------------------------------------------------;
+
 	/**
 	 * Returns a rectangular portion of a bitmap
 	 * @param	source
@@ -100,15 +99,14 @@ class GfxTool
 		var rect:Rectangle = new Rectangle(x, y, width, height);
 		var point:Point = new Point(0, 0);
 		var sourceData:BitmapData;
-		
+
 		sourceData = resolveBitmapData(source);
-		
+
 		r.copyPixels(sourceData, rect, point);
 
 		return r;
-	}//---------------------------------------------------;
-	
-	
+	} //---------------------------------------------------;
+
 	/**
 	 * Flixel offers FlxAssets.resolveBitmapData(FlxGraphicSource) but not with FlxGraphicAsset
 	 * @param	Graphic 
@@ -116,19 +114,21 @@ class GfxTool
 	 */
 	public static function resolveBitmapData(Graphic:FlxGraphicAsset):BitmapData
 	{
-		if (Std.is(Graphic, BitmapData)) {
+		if (Std.isOfType(Graphic, BitmapData))
+		{
 			return cast Graphic;
 		}
-		else if (Std.is(Graphic, FlxGraphic)) {
-			return cast (Graphic, FlxGraphic).bitmap;
+		else if (Std.isOfType(Graphic, FlxGraphic))
+		{
+			return cast(Graphic, FlxGraphic).bitmap;
 		}
-		else if (Std.is(Graphic, String)) {
+		else if (Std.isOfType(Graphic, String))
+		{
 			return FlxAssets.getBitmapData(Graphic);
 		}
 		return null;
-	}//---------------------------------------------------;
-	
-	
+	} //---------------------------------------------------;
+
 	/**
 	 * Draws an entire bitmap onto another bitmap at coordinates. 
 	 * NOTE: The bitmap is copied, so alphas are overwritten.
@@ -139,12 +139,11 @@ class GfxTool
 	 */
 	public static function drawBitmapOn(src:BitmapData, dest:BitmapData, x:Int = 0, y:Int = 0)
 	{
-		var rect:Rectangle = new Rectangle(0, 0, src.width, src.height );
+		var rect:Rectangle = new Rectangle(0, 0, src.width, src.height);
 		var point:Point = new Point(x, y);
 		dest.copyPixels(src, rect, point);
-	}//---------------------------------------------------;
-	
-	
+	} //---------------------------------------------------;
+
 	/**
 	 * Takes a bunch of bitmaps and stitches them together to a long stripe
 	 * @param	ar Array of bitmaps NOTE: They must be of the same size!
@@ -155,13 +154,14 @@ class GfxTool
 		var f:BitmapData = new BitmapData((ar.length * ar[0].width), ar[0].height, true, 0x00000000);
 		var rect = new Rectangle(0, 0, ar[0].width, ar[0].height);
 		var p = new Point(0, 0);
-		for (i in 0...ar.length) {
+		for (i in 0...ar.length)
+		{
 			f.copyPixels(ar[i], rect, p);
 			p.x += ar[i].width;
 		}
 		return f;
-	}//---------------------------------------------------;
-		
+	} //---------------------------------------------------;
+
 	/**
 	 * Return an animated flxSprite loaded with the "img" tilesheet
 	 * stopped to target frame.
@@ -169,17 +169,15 @@ class GfxTool
 	 * @param frame number the frame to stop
 	 * @param width Frame Width
 	 * @param height Frame height
-	 **/
+	**/
 	public static function getSpriteFrame(img:String, frame:Int, width:Int, height:Int):FlxSprite
 	{
 		var s = new FlxSprite(0, 0);
 		s.loadGraphic(img, true, width, height);
 		s.animation.frameIndex = frame;
 		return s;
-	}//---------------------------------------------------;
-	
-	
-	
+	} //---------------------------------------------------;
+
 	/**
 	 * Replace a color on a bitmap using the built-in Threshold function. Returns a new bitmap
 	 * It's faster than `FlxButmapDataUtil.replaceColor()`
@@ -192,12 +190,11 @@ class GfxTool
 	{
 		var rect:Rectangle = new Rectangle(0, 0, source.width, source.height);
 		var point:Point = new Point();
-		var dest:BitmapData = cloneImage?source.clone():source;
+		var dest:BitmapData = cloneImage ? source.clone() : source;
 		dest.threshold(dest, rect, point, "==", color0, color1);
 		return dest;
-	}//---------------------------------------------------;
-		
-	
+	} //---------------------------------------------------;
+
 	/**
 	 * Replace a set of colors in a bitmap with another set of colors
 	 * Creates a new bitmap, does not modify the original one.
@@ -211,73 +208,78 @@ class GfxTool
 	{
 		trace("Warning: I can improve this function by making it use bitmap not flxgraphic");
 		var gfx:FlxGraphic = FlxG.bitmap.create(b.width, b.height, 0x00000000, true);
-			
+
 		// gfx.persist = true;
-		
+
 		// Check to see if the source and dest are the same length
 		#if debug
-		if (source.length != dest.length) {
+		if (source.length != dest.length)
+		{
 			trace("Error: Source and Destination color mappings are different sized");
 			return null;
 		}
 		#end
-		
+
 		gfx.bitmap.lock();
-		
+
 		var col:Int;
 		var ind:Int;
-		
+
 		for (y in 0...b.height)
-		for (x in 0...b.width)
-		{
-			col = b.getPixel32(x, y);
-			if (col == 0) continue;
-			
-			ind = source.indexOf(col);
-			if (ind >= 0) {
-				// Write the mapped color
-				gfx.bitmap.setPixel32(x, y, dest[ind]);
-			}else {
-				// Write the same color with no change
-				gfx.bitmap.setPixel32(x, y, col);
+			for (x in 0...b.width)
+			{
+				col = b.getPixel32(x, y);
+				if (col == 0)
+					continue;
+
+				ind = source.indexOf(col);
+				if (ind >= 0)
+				{
+					// Write the mapped color
+					gfx.bitmap.setPixel32(x, y, dest[ind]);
+				}
+				else
+				{
+					// Write the same color with no change
+					gfx.bitmap.setPixel32(x, y, col);
+				}
 			}
-		}
-			
+
 		gfx.bitmap.unlock();
-	
+
 		return gfx;
-	
-	}//---------------------------------------------------;
-	
-	static inline public function extractRed(c:Int):Int 
+	} //---------------------------------------------------;
+
+	static inline public function extractRed(c:Int):Int
 	{
-		return (( c >> 16 ) & 0xFF);
-	}//---------------------------------------------------;
-	static inline public function extractGreen(c:Int):Int 
+		return ((c >> 16) & 0xFF);
+	} //---------------------------------------------------;
+
+	static inline public function extractGreen(c:Int):Int
 	{
-		return ( (c >> 8) & 0xFF );
-	}//---------------------------------------------------;
-	static inline public function extractBlue(c:Int):Int 
+		return ((c >> 8) & 0xFF);
+	} //---------------------------------------------------;
+
+	static inline public function extractBlue(c:Int):Int
 	{
-		return ( c & 0xFF );
-	}//---------------------------------------------------;
-	
+		return (c & 0xFF);
+	} //---------------------------------------------------;
+
 	/**
 	 * Snaps to color
 	 * @param	a COLOR 
 	 * @param	div snap value(1-255)
 	 * @return
 	 */
-	static inline public function snapToLowerBitRepr(a:Int,div:Int = 64):Int
+	static inline public function snapToLowerBitRepr(a:Int, div:Int = 64):Int
 	{
 		return Math.floor(a / div) * div;
-	}//---------------------------------------------------;
-	
-	
-	//====================================================;
+	} //---------------------------------------------------;
+
+	// ====================================================;
 	// Bitmap Generator
-	//====================================================;
-	
+	// ====================================================;
+
 	/**
 	 * Generate a bitmap with
 	 * @param	colors An array with the colors to draw
@@ -285,7 +287,7 @@ class GfxTool
 	 * @param	height Height of the final bitapdata
 	 * @return
 	 */
-	static public function rainbowStripes(colors:Array<Int>, width:Int = 20, height:Int = 100 ):BitmapData
+	static public function rainbowStripes(colors:Array<Int>, width:Int = 20, height:Int = 100):BitmapData
 	{
 		var b = new BitmapData(width, height, false);
 		var ch:Int = Std.int(height / colors.length);
@@ -298,12 +300,11 @@ class GfxTool
 		}
 		b.unlock();
 		return b;
-	}//---------------------------------------------------;
-	
+	} //---------------------------------------------------;
 
 	// Prefix for when parsing a color string
 	static inline var PREFIX_PALETTE:String = "@";
-	
+
 	/**
 	 * Quickly parse a custom color string, useful when reading color data from JSON etc
 	 * Will check the string for PaletteColors "check palCol()" and then pass it to FlxColor.fromString()
@@ -316,12 +317,13 @@ class GfxTool
 		{
 			// It's a Palette Color
 			return palCol(s.substr(1));
-		}else{
+		}
+		else
+		{
 			return FlxColor.fromString(s);
 		}
-	}//---------------------------------------------------;
+	} //---------------------------------------------------;
 
-	
 	/**
 	 * Return a palette color based on a string code
 	 * Supported :: (check djFlixel.gfx.palette.*)
@@ -343,16 +345,25 @@ class GfxTool
 	{
 		var exp = ~/(.+)\[(\d+)\]/;
 		exp.match(str);
-		if (exp.matched(1) != null){
-			switch(exp.matched(1)){
-				case "A16" : return Palette_Arne16.COL[Std.parseInt(exp.matched(2))];
-				case "DB16" : return Palette_DB16.COL[Std.parseInt(exp.matched(2))];
-				case "DB32" : return Palette_DB32.COL[Std.parseInt(exp.matched(2))];
-				case "AMS" :return Palette_Amstrad.COL[Std.parseInt(exp.matched(2))];
-				default : trace("ERROR - Unsupported pallete code", exp.matched(1)); return 0;
+		if (exp.matched(1) != null)
+		{
+			switch (exp.matched(1))
+			{
+				case "A16":
+					return Palette_Arne16.COL[Std.parseInt(exp.matched(2))];
+				case "DB16":
+					return Palette_DB16.COL[Std.parseInt(exp.matched(2))];
+				case "DB32":
+					return Palette_DB32.COL[Std.parseInt(exp.matched(2))];
+				case "AMS":
+					return Palette_Amstrad.COL[Std.parseInt(exp.matched(2))];
+				default:
+					trace("ERROR - Unsupported pallete code", exp.matched(1));
+					return 0;
 			}
 		}
-		trace("ERROR - Error parsing Pallete String", str); return 0;
-	}//---------------------------------------------------;
-	
-}// -- end --//
+		trace("ERROR - Error parsing Pallete String", str);
+		return 0;
+	} //---------------------------------------------------;
+
+} // -- end --//
